@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario SOAT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="row g-0 px-2">
+    <!-- Lado Izquierdo -->
+    <div class="col-md-6 px-2 ">
+      <div class="accordion" id="formAccordion">
+
+        <!-- Sección 1: Datos Generales -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingGeneral">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral">
+              <i class="bi bi-info-circle me-2"></i> Datos Generales
+            </button>
+          </h2>
+          <div id="collapseGeneral" class="accordion-collapse collapse show" data-bs-parent="#formAccordion">
+            <div class="accordion-body">
+              <div class="row g-3">
+                <div class="col-md-3"><label class="form-label">Tipo Solicitud</label>
+                <select class="form-select"><option selected>Indemnizacion</option><option>Reembolso</option></select>
+              </div>
+                <div class="col-md-3"><label class="form-label">Cobertura</label>
+                <select class="form-select">
+                  <option selected>Incapacidad Temporal</option>
+                  <option>Incapacidad Permanente</option>
+                  <option>Muerte</option>
+                </select>
+              </div>
+              <div class="col-md-3"><label class="form-label">Monto Solicitado</label><input type="text" class="form-control" ></div>
+                <div class="col-md-3"><label class="form-label">Fecha Recepción</label><input type="date" class="form-control"></div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 2: Datos del Solicitante -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSolicitante">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolicitante">
+              <i class="bi bi-person-vcard me-2"></i> Datos del Solicitante
+            </button>
+          </h2>
+          <div id="collapseSolicitante" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+            <div class="accordion-body">
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Nombres</label><input type="text" class="form-control" value="JORGE YOMER REYNA MOZO"></div>
+                <div class="col-md-3"><label class="form-label">DNI</label><input type="text" class="form-control" value="71620488"></div>
+                <div class="col-md-3"><label class="form-label">Celular</label><input type="text" class="form-control" value="901107389"></div>
+                <div class="col-md-6"><label class="form-label">Correo</label><input type="email" class="form-control" value="reynamozojorge3@gmail.com"></div>
+                <div class="col-md-6"><label class="form-label">Domicilio</label><input type="text" class="form-control" value="BARRIO 3A C. POBLADO MENOR ALTO TRUJILLO MZ B LT 27"></div>
+                <div class="col-md-6">
+                  <label class="form-label">Relación con el lesionado</label>
+                  <select class="form-select">
+                    <option selected>Lesionado</option>
+                    <option>Cónyuge</option>
+                    <option>Hijo</option>
+                    <option>Padre</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 3: Datos del Lesionado -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingLesionado">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLesionado">
+              <i class="bi bi-person-fill-injured me-2"></i> Datos del Lesionado
+            </button>
+          </h2>
+          <div id="collapseLesionado" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+            <div class="accordion-body">
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Nombres</label><input type="text" class="form-control" value="JORGE YOMER REYNA MOZO"></div>
+                <div class="col-md-3"><label class="form-label">DNI</label><input type="text" class="form-control" value="71620488"></div>
+                <div class="col-md-3"><label class="form-label">Celular</label><input type="text" class="form-control" value="901107389"></div>
+                <div class="col-md-6"><label class="form-label">Correo</label><input type="email" class="form-control" value="reynamozojorge3@gmail.com"></div>
+                <div class="col-md-6"><label class="form-label">Domicilio</label><input type="text" class="form-control" value="BARRIO 3A C. POBLADO MENOR ALTO TRUJILLO MZ B LT 27"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 4: Cuenta Bancaria -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingBanco">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBanco">
+              <i class="bi bi-bank me-2"></i> Datos de la Cuenta Bancaria
+            </button>
+          </h2>
+          <div id="collapseBanco" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+            <div class="accordion-body">
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" checked><label class="form-check-label">Transferencia Bancaria</label>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Titular</label><input type="text" class="form-control" value="JORGE YOMER REYNA MOZO"></div>
+                <div class="col-md-3"><label class="form-label">DNI</label><input type="text" class="form-control" value="71620488"></div>
+                <div class="col-md-12">
+                  <label class="form-label">Banco</label><br>
+                  <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Continental</label></div>
+                  <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox"><label class="form-check-label">BCP</label></div>
+                  <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox"><label class="form-check-label">Scotiabank</label></div>
+                  <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox"><label class="form-check-label">Interbank</label></div>
+                  <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox"><label class="form-check-label">Banco de la Nación</label></div>
+                </div>
+                <div class="col-md-3"><label class="form-label">Tipo de cuenta</label>
+                  <select class="form-select"><option selected>Cta. Ahorros</option><option>Cta. Corriente</option></select>
+                </div>
+                <div class="col-md-3"><label class="form-label">Moneda</label>
+                  <select class="form-select"><option selected>Soles</option><option>Dólares</option></select>
+                </div>
+                <div class="col-md-3"><label class="form-label">N° Cuenta</label><input type="text" class="form-control" value="57099110840013"></div>
+                <div class="col-md-3"><label class="form-label">CCI</label><input type="text" class="form-control" value="00257019911084001305"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 5: Documentos -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingDocs">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs">
+              <i class="bi bi-folder-check me-2"></i> Documentos Presentados
+            </button>
+          </h2>
+          <div id="collapseDocs" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+            <div class="accordion-body">
+              <div class="form-check"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Documento de identidad del lesionado</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Documento de identidad del solicitante</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Denuncia policial</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Certificado médico</label></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-end my-4">
+          <button class="btn btn-success"><i class="bi bi-send-check"></i> Enviar Solicitud</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Lado Derecho -->
+    <div class="col-md-6 px-1">
+      <div class="accordion" id="formAccordion2">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingGeneral2">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral2">
+              <i class="bi bi-info-circle me-2"></i> Solicitudes
+            </button>
+          </h2>
+          <div id="collapseGeneral2" class="accordion-collapse collapse show" data-bs-parent="#formAccordion">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th><th>Tipo Solicitud</th><th>Cobertura</th><th>Monto</th><th>Fecha Recepcion</th><th>Beneficiario</th><th>Estado</th><th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td><td>Indemnizacion</td><td>Incapacidad Temporal</td><td>450.00</td><td>22/05/2024</td><td>Manuel Perez Torres</td>
+                      <td><select class="form-select"><option selected>Pendiente</option><option>Observado</option></select></td>
+                      <td><div class="btn-group"><button class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></button><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></div></td>
+                    </tr>
+                    <tr>
+                      <td>2</td><td>Reembolso</td><td>Gastos Medicos</td><td>450.00</td><td>22/05/2024</td><td>Maria Prada Paz</td>
+                      <td><select class="form-select"><option selected>Pendiente</option><option>Observado</option></select></td>
+                      <td><div class="btn-group"><button class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></button><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

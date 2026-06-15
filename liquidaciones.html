@@ -1,0 +1,2857 @@
+<style>
+  #derivacionInr {
+    display: none;
+  }
+  #informe {
+    display: none;
+  }
+  #derivacionInrInvPer {
+    display: none;
+  }
+  #informeInvPer {
+    display: none;
+  }
+
+  #modalRemGastosPen .modal-dialog {
+    max-width: 96vw;
+  }
+
+  #modalRemGastosPen .modal-content {
+    border-radius: 0;
+  }
+
+  #modalRemGastosPen .modal-header {
+    padding: 0.25rem 0.75rem;
+    background: #f3f3f3;
+    border-bottom: 1px solid #7f7f7f;
+  }
+
+  #modalRemGastosPen .modal-title {
+    font-size: 1.5rem;
+    color: #183847;
+  }
+
+  #modalRemGastosPen .modal-body {
+    padding: 0.35rem 0.4rem 0;
+    font-size: 13px;
+  }
+
+  #modalRemGastosPen .liquidacion-panel {
+    border: 1px solid #9a9a9a;
+    background: #fff;
+    height: 100%;
+  }
+
+  #modalRemGastosPen .liquidacion-documentos-fieldset {
+    border: 1px solid #9a9a9a;
+    padding: 0.25rem 0.35rem 0.35rem;
+    min-height: 100%;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-item {
+    border: 1px solid #9a9a9a;
+    border-radius: 0;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-item + .accordion-item {
+    margin-top: 0.25rem;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-button {
+    padding: 0.3rem 0.45rem;
+    background: #8db3e2;
+    color: #16344b;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-button:not(.collapsed) {
+    background: #8db3e2;
+    color: #16344b;
+    box-shadow: none;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-button::after {
+    width: 0.85rem;
+    height: 0.85rem;
+    background-size: 0.85rem;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-button.collapsed {
+    background: #f4f4f4;
+    color: #333;
+  }
+
+  #modalRemGastosPen .liquidacion-accordion .accordion-body {
+    padding: 0;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-documentos-fieldset legend {
+    float: none;
+    width: auto;
+    padding: 0 0.3rem;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  #modalRemGastosPen .liquidacion-top-box {
+    border: 1px solid #9a9a9a;
+    padding: 0.35rem 0.45rem;
+    margin-bottom: 0.45rem;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-grid-box {
+    border: 1px solid #9a9a9a;
+    border-top: 0;
+    padding: 0.45rem;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-summary {
+    border: 1px solid #9a9a9a;
+    background: #fff;
+    padding: 0.25rem;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row {
+    display: grid;
+    grid-template-columns: 1fr 95px;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.2rem;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row:last-child {
+    margin-bottom: 0;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row span {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row.aprobado span:first-child {
+    color: #2d63c8;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row.observado span:first-child {
+    color: #d33f3f;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row.aprobado input {
+    background: #cfe2ff;
+  }
+
+  #modalRemGastosPen .liquidacion-summary-row.observado input {
+    background: #f3b4b4;
+  }
+
+  #modalRemGastosPen .liquidacion-section-title {
+    background: #8db3e2;
+    color: #16344b;
+    font-weight: 700;
+    padding: 0.3rem 0.45rem;
+    border-bottom: 1px solid #7f7f7f;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  #modalRemGastosPen .liquidacion-doc-frame {
+    height: 590px;
+    padding: 0.45rem 0.35rem 0.2rem;
+    overflow: auto;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-doc-frame object {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .liquidacion-doc-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #d8d8d8;
+  }
+
+  #modalRemGastosPen .liquidacion-doc-footer {
+    border-top: 1px solid #9a9a9a;
+    padding: 0.25rem 0.45rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  #modalRemGastosPen .liquidacion-fieldset {
+    border: 1px solid #9a9a9a;
+    padding: 0.35rem 0.45rem 0.45rem;
+    min-height: 100%;
+  }
+
+  #modalRemGastosPen .liquidacion-fieldset legend {
+    float: none;
+    width: auto;
+    padding: 0 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 13px;
+    color: #333;
+  }
+
+  #modalRemGastosPen .liquidacion-info-line {
+    color: #265fc5;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+
+  #modalRemGastosPen .liquidacion-inline-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.15rem;
+  }
+
+  #modalRemGastosPen .form-control,
+  #modalRemGastosPen .form-select,
+  #modalRemGastosPen .input-group-text {
+    border-radius: 0;
+    font-size: 11px;
+  }
+
+  #modalRemGastosPen .form-control,
+  #modalRemGastosPen .form-select {
+    min-height: 24px;
+    padding: 0.1rem 0.35rem;
+  }
+
+  #modalRemGastosPen .input-group-text {
+    padding: 0.1rem 0.35rem;
+  }
+
+  #modalRemGastosPen .liquidacion-action-tabs .nav-link,
+  #modalRemGastosPen .liquidacion-observation-tabs .nav-link,
+  #modalRemGastosPen .liquidacion-bottom-tabs .nav-link {
+    border-radius: 0;
+    padding: 0.18rem 0.45rem;
+    font-size: 11px;
+    color: #333;
+  }
+
+  #modalRemGastosPen .liquidacion-action-tabs .nav-link.active,
+  #modalRemGastosPen .liquidacion-observation-tabs .nav-link.active,
+  #modalRemGastosPen .liquidacion-bottom-tabs .nav-link.active {
+    font-weight: 700;
+    color: #111;
+  }
+
+  #modalRemGastosPen .liquidacion-pane-box {
+    border: 1px solid #9a9a9a;
+    border-top: 0;
+    padding: 0.4rem;
+    min-height: 270px;
+  }
+
+  #modalRemGastosPen .liquidacion-observation-box {
+    min-height: 78px;
+    resize: none;
+  }
+
+  #modalRemGastosPen .liquidacion-bottom-box {
+    border: 1px solid #9a9a9a;
+    border-top: 0;
+    min-height: 32px;
+    background: #fff;
+  }
+
+  #modalRemGastosPen .modal-footer {
+    justify-content: center;
+    gap: 0.75rem;
+    padding-top: 0.55rem;
+  }
+  </style>
+<h4 class="mb-4">LIQUIDADOR - BANDEJA DE PETICIONES</h4>
+  <form class="mb-4" id="liquidacionesFiltrosForm">
+    <div class="row g-3">
+      <div class="col-md-2">
+        <label class="form-label">Nro de Siniestro</label>
+        <input type="text" class="form-control form-control-sm" id="filtroNroSiniestro">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Nro Peticion:</label>
+        <input type="text" class="form-control form-control-sm" id="filtroNroPeticion">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Tipo Cobertura</label>
+        <select class="form-select form-select-sm" id="filtroTipoCobertura">
+          <option value="">[Seleccione]</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Estado</label>
+        <select class="form-select form-select-sm " id="filtroEstado">
+          <option value="">[Seleccione]</option>
+          <option value="APROBADA">APROBADA</option>
+          <option value="PENDIENTE">PENDIENTE</option>
+          <option value="RECHAZADA">RECHAZADA</option>
+          <option value="APROBADA PARCIAL">APROBADA PARCIAL</option>
+        </select>
+        
+      </div>
+      
+      <div class="col-md-2">
+        <label class="form-label">Fecha Desde</label>
+        <input type="date" class="form-control form-control-sm" id="filtroFechaDesde">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Fecha Hasta</label>
+        <input type="date" class="form-control form-control-sm" id="filtroFechaHasta">
+      </div>
+
+    </div>
+  
+    <div class="row g-3">
+         <div class="col-md-2">
+        <label class="form-label">Paciente / DNI</label>
+        <input type="text" class="form-control form-control-sm" id="filtroPacienteDni">
+      </div>
+        <div class="col-md-8">
+          <label class="form-label"></label>
+          </div>
+      <div class="col-md-2 d-flex align-items-end justify-content-end">
+      <button type="reset" class="btn btn-secondary btn-sm me-2" id="btnLimpiarLiquidaciones">LIMPIAR</button>
+      <button type="submit" class="btn btn-primary btn-sm" id="btnBuscarLiquidaciones">BUSCAR</button>
+    </div>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-sm align-middle text-center" style="font-size: 11px" id="tablaLiquidaciones">
+      <thead class="table-primary">
+        <tr>
+          <th>VER</th>
+          <th>N° PETICION</th>
+          <th>N° SINIESTRO</th>
+          <th>REGISTRO</th>
+          <th>ACCIDENTADO</th>
+          <th>TIPO DE COBERTURA</th>
+          <th>MONTO SOLICITADO</th>
+          <th>MONTO APROBADO</th>
+          <th>ESTADO</th>
+          <th>INR</th>
+          
+          <th>FECHA APROBACION</th>
+          <th>FECHA LIQUIDACION</th>
+          <th>MONTO LIQUIDADO</th>
+          <th>IMP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalRemGastosPen"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalRemGastosPen">R-0001</td>
+          <td>252578</td>
+          <td>22/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">GASTOS MEDICOS</td>
+          <td>650.00</td>
+          <td>0.00</td>
+          
+          <td class="text-danger fw-bold">PENDIENTE</td>
+          
+          
+          <td>-</td>
+          <td>--</td>
+          <td>--</td>
+          <td>-</td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalIncTempAprobada"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#verSolicitudModal">IT-0001</td>
+          <td>252578</td>
+          <td>22/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">INCAPACIDAD TEMPORAL</td>
+          
+          <td>1450.00</td>
+          <td>1450.00</td>
+          <td class="text-success fw-bold"><span class="badge bg-primary">LIQUIDADA</span></td>
+          <td>-</td>
+          
+          <td>22/05/2026</td>
+          <td>22/05/2026</td>
+          <td>1450.00</td>
+          <td><i class="fas fa-print"></i></td>
+          
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalIncTempAprobadaParcial"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalIncTempAprobadaParcial">IT-0002</td>
+          <td>252578</td>
+          <td>23/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">INCAPACIDAD TEMPORAL</td>
+          <td>1550.00</td>
+          <td>1050.00</td>
+          
+          <td class="text-success fw-bold">APROBADA PARCIAL</td>
+          <td><button class="btn btn-light btn-sm"><i class="bi bi-file-text fw-bold text-success fs-10"></i></button></td>
+          
+          <td>23/05/2026</td>
+          <td>--</td>
+          <td>-</td>
+          <td><i class="fas fa-print"></i></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalIncTemp"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#verSolicitudModal">0002</td>
+          <td>252578</td>
+          <td>24/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">INCAPACIDAD TEMPORAL</td>
+          <td>1550.00</td>
+          <td>0.00</td>
+          
+          <td class="text-danger fw-bold">PENDIENTE</td>
+          
+          <td>-</td>
+          <td>--</td>
+          <td>--</td>
+          <td>-</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalInvPer"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalInvPer">IP-0001</td>
+          <td>252578</td>
+          <td>24/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">INVALIDEZ PERMANENTE</td>
+          
+          <td>1000.00</td>
+          <td>1000.00</td>
+          <td class="text-success fw-bold">APROBADA</td>
+          
+          <td>-</td>
+          <td>24/05/2026</td>
+          <td>24/05/2026</td>
+          <td>1000.00</td>
+          <td><i class="fas fa-print"></i></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalInvPerPen"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalInvPerPen">0002</td>
+          <td>252578</td>
+          <td>25/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">INVALIDEZ PERMANENTE</td>
+          <td>500.00</td>
+          <td>0.00</td>
+          
+          <td class="text-danger fw-bold">PENDIENTE</td>
+          
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalIndMuerte"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalIndMuerte">IM-0001</td>
+          <td>252578</td>
+          <td>25/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">MUERTE</td>
+          <td>21400.00</td>
+          <td>0.00</td>
+          
+          <td class="text-danger fw-bold">PENDIENTE</td>
+          
+          <td>-</td>
+          <td>--</td>
+          <td>--</td>
+          <td>-</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalRemSepelio"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalRemSepelio">SE-0001</td>
+          <td>252578</td>
+          <td>25/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">SEPELIO</td>
+          
+          <td>800.00</td>
+          <td>800.00</td>
+          <td class="text-success fw-bold">APROBADA</td>
+          
+          <td>-</td>
+          <td>25/05/2026</td>
+          <td>-</td>
+          <td>-</td>
+          <td><i class="fas fa-print"></i></td>
+        </tr>
+       
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalRemSepelio2"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalRemSepelio2">SE-0002</td>
+          <td>252578</td>
+          <td>25/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">SEPELIO</td>
+          
+          <td>200.00</td>
+          <td>200.00</td>
+          <td class="text-success fw-bold">APROBADA</td>
+          
+          <td>-</td>
+          <td>25/05/2026</td>
+          <td>-</td>
+          <td>-</td>
+          <td><i class="fas fa-print"></i></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Indemnizacion / Reembolso" data-bs-toggle="modal" data-bs-target="#modalRemSepelioPen"><i class="bi bi-file-text"></i></button></td>
+          <td class="fw-bold" data-bs-toggle="modal" data-bs-target="#modalRemSepelioPen">0003</td>
+          <td>252578</td>
+          <td>28/05/2026<br>15:52:14</td>
+          <td>PONTE FUENTES JHAIR</td>
+          
+          <td class="text-primary fw-bold fs-8">SEPELIO</td>
+          <td>200.00</td>
+          <td>0.00</td>
+          
+          <td class="text-danger fw-bold">PENDIENTE</td>
+          
+          <td>-</td>
+          <td>--</td>
+          <td>--</td>
+          <td>-</td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <nav class="mt-3">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+    </ul>
+  </nav>
+
+
+<!-- Modal Ver Solicitud-->
+<div class="modal fade" id="modalIndRem" tabindex="-1" aria-labelledby="modalIndRemLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIndRemLabel">VER SOLICITUD</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <img src="img/reembolso.JPG" alt="" class="img-fluid" style="width: 100%;">
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4">CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Subir Archivo 
+<div class="modal fade" id="modalSubirArchivo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalSubirArchivoLabel">Subir Archivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <input type="file" class="form-control" id="archivo" accept=".pdf,.jpg,.jpeg,.png">
+          </div>
+          <div class="mb-3 d-flex align-items-center" >
+            <label for="fechaRecepcion" class="form-label me-2" >Fecha de recepción</label>
+            <input type="date" class="form-control w-50" id="fechaRecepcion">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success">Subir</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<!-- Modal REEMBOLSO GASTOS MEDICOS-->
+<div class="modal fade" id="modalRemGastosPen" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xxl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalRemGastosPenLabel">N° CG-005</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-2 align-items-stretch">
+          <div class="col-lg-5">
+            <div class="liquidacion-accordion accordion" id="modalRemGastosPenAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="modalRemGastosPenFacturaHeading">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#modalRemGastosPenFacturaCollapse" aria-expanded="true" aria-controls="modalRemGastosPenFacturaCollapse">
+                    FACTURA
+                  </button>
+                </h2>
+                <div id="modalRemGastosPenFacturaCollapse" class="accordion-collapse collapse show" aria-labelledby="modalRemGastosPenFacturaHeading" data-bs-parent="#modalRemGastosPenAccordion">
+                  <div class="accordion-body">
+                    <div class="liquidacion-doc-frame">
+                      <img src="img/solben.JPG" alt="Factura de sustento">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="modalRemGastosPenSustentosHeading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#modalRemGastosPenSustentosCollapse" aria-expanded="false" aria-controls="modalRemGastosPenSustentosCollapse">
+                    SUSTENTOS
+                  </button>
+                </h2>
+                <div id="modalRemGastosPenSustentosCollapse" class="accordion-collapse collapse" aria-labelledby="modalRemGastosPenSustentosHeading" data-bs-parent="#modalRemGastosPenAccordion">
+                  <div class="accordion-body">
+                    <div class="liquidacion-doc-frame" style="height: 160px;">
+                      <img src="img/solicitud.JPG" alt="Sustentos del caso">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <fieldset class="liquidacion-fieldset">
+              <legend>DATOS</legend>
+              <div class="liquidacion-info-line d-flex flex-wrap gap-4">
+                <span>Fecha de Ocurrencia del siniestro: 25-08-2025</span>
+                <span>Placa: NH8 - 908</span>
+                <span>Póliza: 85412255</span>
+                <span>Tipo de Accidente: Choque</span>
+              </div>
+
+              <div class="row g-2 align-items-end mb-3">
+                <div class="col-md-4">
+                  <label class="liquidacion-inline-label">TIPO SOLICITUD (*)</label>
+                  <select class="form-select form-select-sm" disabled>
+                    <option selected>INDEMNIZACI.</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="liquidacion-inline-label">COBERTURA (*)</label>
+                  <select class="form-select form-select-sm" disabled>
+                    <option selected>INCAPACIDAD TEMP</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label class="liquidacion-inline-label">ESTADO</label>
+                  <select class="form-select form-select-sm">
+                    <option selected>APROBADO</option>
+                    <option>RECHAZADO</option>
+                    <option>OBSERVADO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="liquidacion-top-box">
+                <div class="row g-2 align-items-end mb-3">
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">FECHA DE INICIO (*)</label>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control text-center" value="26 / 06 / 2025">
+                      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">FECHA FIN (*)</label>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control text-center" value="05 / 06 / 2025">
+                      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">FECHA DE RECEPCION (*)</label>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control text-center" value="26 / 06 / 2025">
+                      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">MONTO SOLICITADO/CARTA(*)</label>
+                    <input type="text" class="form-control form-control-sm text-end" value="1890.00">
+                  </div>
+                </div>
+              </div>
+
+              <ul class="nav nav-tabs liquidacion-action-tabs mb-0" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" type="button">LIQUIDAR</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" type="button">OBSERVAR</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" type="button">RECHAZAR</button>
+                </li>
+              </ul>
+
+              <div class="liquidacion-grid-box mb-3">
+                <div class="row g-2 align-items-end mb-3">
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">Fecha de Factura</label>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control text-center" value="05 / 06 / 2025">
+                      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">Fecha Recep Factura</label>
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control text-center" value="05 / 06 / 2025">
+                      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-2 offset-md-2">
+                    <label class="liquidacion-inline-label">Nro Serie</label>
+                    <input type="text" class="form-control form-control-sm text-center" value="F002">
+                  </div>
+                  <div class="col-md-2">
+                    <label class="liquidacion-inline-label">Nro Factura</label>
+                    <input type="text" class="form-control form-control-sm text-center" value="0004512">
+                  </div>
+                </div>
+
+                <div class="row g-2 align-items-end mb-3">
+                  <div class="col-md-1">
+                    <label class="liquidacion-inline-label">Tipo Documento</label>
+                    <select class="form-select form-select-sm">
+                      <option selected>RUC</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="liquidacion-inline-label">Nro Documento</label>
+                    <input type="text" class="form-control form-control-sm" value="20517738701">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="liquidacion-inline-label">Razon Social | Nombres</label>
+                    <input type="text" class="form-control form-control-sm" value="CLINICA JESUS DEL NORTE">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="liquidacion-inline-label">Direccion</label>
+                    <input type="text" class="form-control form-control-sm" value="AV REPUBLICA DE PANAMA NRO 165 - LIMA - LIMA - SURQUILLO">
+                  </div>
+                </div>
+
+                <div class="row g-2 align-items-start">
+                  <div class="col-md-7">
+                    <div class="row g-2 align-items-end mb-2">
+                      <div class="col-md-8">
+                      <label class="liquidacion-inline-label">Diagnóstico Clínico</label>
+                      <select class="form-select form-select-sm">
+                        <option selected>M54.9-DORSALGIA, NO ESPECIFICADA</option>
+                      </select>
+                    </div>
+                      <div class="col-md-4">
+                      <label class="liquidacion-inline-label">Especialidad</label>
+                      <select class="form-select form-select-sm">
+                        <option selected>MEDICINA INTERNA</option>
+                      </select>
+                    </div>
+                  </div>
+
+                    <div class="row g-2 mb-2 align-items-end">
+                      <div class="col-md-6">
+                      <label class="liquidacion-inline-label">Médico Tratante</label>
+                      <input type="text" class="form-control form-control-sm" value="MEDINA MEZA EDUARDO">
+                    </div>
+                    </div>
+
+                    <div class="row g-2 align-items-end">
+                      <div class="col-md-6">
+                      <label class="liquidacion-inline-label">Médico Auditor</label>
+                        <div class="input-group input-group-sm">
+                          <select class="form-select form-select-sm">
+                            <option selected>DR. ELOY PEÑA MONGE</option>
+                            <option>DR. JUAN PEREZ</option>
+                            <option>DRA. MARIA LOPEZ</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-5">
+                    <div class="liquidacion-summary">
+                      <div class="liquidacion-summary-row">
+                        <span>MONTO BASE</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row">
+                        <span>IGV</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row">
+                        <span>TOTAL</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row">
+                        <span>TOTAL GASTOS PRESENTADOS C/IGV</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row">
+                        <span>TOTAL GASTOS EXCLUIDOS C/IGV</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row">
+                        <span>DEDUCIBLE</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row aprobado">
+                        <span>MONTO APROBADO (*)</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                      <div class="liquidacion-summary-row observado">
+                        <span>MONTO OBSERVADO (*)</span>
+                        <input type="text" class="form-control form-control-sm text-end" value="0.00">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="nav nav-tabs liquidacion-observation-tabs mb-0" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#liq-obs-admin" type="button">OBSERVACIONES ADMINISTRATIVAS</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#liq-obs-generales" type="button">OBSERVACIONES GENERALES - MEDICO</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#liq-obs-medicas" type="button">OBSERVACIONES MEDICAS</button>
+                </li>
+              </ul>
+              <div class="tab-content border border-top-0 p-2 mb-2">
+                <div class="tab-pane fade show active" id="liq-obs-admin">
+                  <textarea class="form-control liquidacion-observation-box"></textarea>
+                </div>
+                <div class="tab-pane fade" id="liq-obs-generales">
+                  <textarea class="form-control liquidacion-observation-box">Se valida la documentación y queda lista para liquidación.</textarea>
+                </div>
+                <div class="tab-pane fade" id="liq-obs-medicas">
+                  <textarea class="form-control liquidacion-observation-box">Caso compatible con incapacidad temporal. Pendiente de cierre de liquidación.</textarea>
+                </div>
+              </div>
+
+              <ul class="nav nav-tabs liquidacion-bottom-tabs mb-0" role="tablist">
+                <li class="nav-item" role="presentation"><button class="nav-link active" type="button">Version 2.0</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" type="button">Version-1.0</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" type="button">Tracking</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" type="button">Documentacion Requerida</button></li>
+              </ul>
+              <div class="liquidacion-bottom-box"></div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="button" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INDEMNIZACION MUERTE PENDIENTE-->
+<div class="modal fade" id="modalIndSepelioPen" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIndSepelioPenLabel">SOLICITUD SE-0002</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion"  disabled>
+                  <label class="form-check-label" for="indemnizacion" disabled>INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" checked>
+                  <label class="form-check-label" for="reembolso" >REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="sepelio" selected>SEPELIO</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value="pendiente" selected>PENDIENTE</option>
+                        <option value="aprobada">APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Porcentaje y monto -->
+               <div class="row g-3 mb-3">
+                 <div class="col-md-7">
+                   <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+                   <input type="text" class="form-control w-50" id="montoCarta" value="200.00">
+                 </div>
+               </div>
+ 
+             </div>
+             <!-- Columna derecha: documentación requerida -->
+             <div class="col-md-6">
+               <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+               <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                 <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                   <thead class="table-light text-center">
+                     <tr>
+                       <th style="width: 30px;">#</th>
+                       <th style="width: 30px;">Subido</th>
+                       <th style="width: 30px;">Fecha Recepción</th>
+                       <th>ARCHIVO</th>
+                       <th style="width: 60px;">OPC</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>1</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>2</td>
+                       <td></td>
+                       <td></td>
+                       <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>3</td>
+                       <td></td>
+                       <td></td>
+                       <td>HISTORIA CLINICA</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>4</td>
+                       <td></td>
+                       <td></td>
+                       <td>CERTIFICADO MEDICO</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">>📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INCAPACIDAD TEMPORAL APROBADA -->
+<div class="modal fade" id="modalIncTempAprobada" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIncTempAprobadaLabel">SOLICITUD IT-0001</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion" checked >
+                  <label class="form-check-label" for="indemnizacion">INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" disabled>
+                  <label class="form-check-label" for="reembolso" disabled>REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="muerte" selected>INCAPACIDAD TEMPORAL</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" >
+                        <option value="">PENDIENTE</option>
+                        <option value="aprobada" selected>APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="fechaInicio" class="form-label fw-bold">FECHA INICIO</label>
+                  <input type="date" class="form-control" id="fechaInicio" value="2024-03-22">
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaFin" class="form-label fw-bold">FECHA FIN</label>
+                  <input type="date" class="form-control" id="fechaFin" value="2024-04-22">
+                </div>
+              </div>
+              
+
+              <!-- Porcentaje y monto -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="porcentaje" class="form-label fw-bold">N° DE DIAS SOLICITADOS</label>
+                  <input type="number" class="form-control text-center w-75" id="porcentaje" value="31" disabled>
+                </div>
+                <div class="col-md-6">
+                  <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(*)</label>
+                  <input type="text" class="form-control text-center" id="montoCarta" value="1450.00" disabled>
+                </div>
+              </div>
+              <hr>
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="porcentaje" class="form-label fw-bold">N° DE DIAS APROBADOS(*)</label>
+                  <input type="number" class="form-control text-center w-75" id="porcentaje" value="31">
+                </div>
+                <div class="col-md-6">
+                  <label for="montoCarta" class="form-label fw-bold">MONTO APROBADO(*)</label>
+                  <input type="text" class="form-control text-center" id="montoCarta" value="1450.00" disabled>
+                </div>
+              </div>
+
+              
+             
+            </div>
+
+            <!-- Columna derecha: documentación requerida -->
+            <div class="col-md-6">
+              <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+              <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                  <thead class="table-light text-center">
+                    <tr>
+                      <th style="width: 30px;">#</th>
+                      <th style="width: 30px;">Subido</th>
+                      <th style="width: 30px;">Fecha de Recepción</th>
+                      <th>ARCHIVO</th>
+                      <th style="width: 60px;">OPC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>06/05/2025</td>
+                      <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>08/05/2025</td>
+                      <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>09/05/2025</td>
+                      <td>HISTORIA CLINICA</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>10/05/2025</td>
+                      <td>CERTIFICADO MEDICO</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Agrega más filas según sea necesario -->
+                  </tbody>
+                </table>
+              </div>
+              <div id="" class="row g-3 mb-3 mt-2">
+                <div class="col-md-6">
+                  <label class="form-check-label" for="validarDerivacionALabel">DERIVACION INR</label>
+                  <input class="form-check-input" type="checkbox">
+                </div>
+                
+                
+                
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INCAPACIDAD TEMPORAL APROBADA PARCIAL -->
+<div class="modal fade" id="modalIncTempAprobadaParcial" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIncTempAprobadaParcialLabel">SOLICITUD IT-0001</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion" checked >
+                  <label class="form-check-label" for="indemnizacion">INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" disabled>
+                  <label class="form-check-label" for="reembolso" disabled>REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="muerte" selected>INCAPACIDAD TEMPORAL</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" >
+                        <option value="">PENDIENTE</option>
+                        <option value="aprobada">APROBADA</option>
+                        <option value="aprobadaParcial" selected>APROBADA PARCIAL</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="fechaInicio" class="form-label fw-bold">FECHA INICIO</label>
+                  <input type="date" class="form-control" id="fechaInicio" value="2024-03-22">
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaFin" class="form-label fw-bold">FECHA FIN</label>
+                  <input type="date" class="form-control" id="fechaFin" value="2024-04-22">
+                </div>
+              </div>
+              
+
+              <!-- Porcentaje y monto -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="porcentaje" class="form-label fw-bold">N° DE DIAS SOLICITADOS</label>
+                  <input type="number" class="form-control text-center w-75" id="porcentaje" value="41" disabled>
+                </div>
+                <div class="col-md-6">
+                  <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(*)</label>
+                  <input type="text" class="form-control text-center" id="montoCarta" value="1550.00" disabled>
+                </div>
+              </div>
+              <hr>
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="porcentaje" class="form-label fw-bold">N° DE DIAS APROBADOS(*)</label>
+                  <input type="number" class="form-control text-center w-75" id="porcentaje" value="31">
+                </div>
+                <div class="col-md-6">
+                  <label for="montoCarta" class="form-label fw-bold">MONTO APROBADO(*)</label>
+                  <input type="text" class="form-control text-center" id="montoCarta" value="1050.00" disabled>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Columna derecha: documentación requerida -->
+            <div class="col-md-6">
+              <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+              <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                  <thead class="table-light text-center">
+                    <tr>
+                      <th style="width: 30px;">#</th>
+                      <th style="width: 30px;">Subido</th>
+                      <th style="width: 30px;">Fecha de Recepción</th>
+                      <th>ARCHIVO</th>
+                      <th style="width: 60px;">OPC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>06/05/2025</td>
+                      <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>08/05/2025</td>
+                      <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>09/05/2025</td>
+                      <td>HISTORIA CLINICA</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>10/05/2025</td>
+                      <td>CERTIFICADO MEDICO</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Agrega más filas según sea necesario -->
+                  </tbody>
+                </table>
+              </div>
+
+              <div  class="row g-3 mb-3 mt-2">
+                <div class="col-md-6">
+                  <label class="form-check-label" for="validarDerivacionLabel">DERIVACION INR</label>
+                  <input class="form-check-input" type="checkbox" id="validarDerivacionx" checked >
+                </div>
+                
+                  <div class="col-md-6">
+                    <button class="btn btn-success btn-sm">Adjuntar Informe</button>
+                  </div>
+                
+              </div>
+              <div>
+               <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="fechaDerivacion" class="form-label fw-bold">FECHA DERIVACION(*)</label>
+                  <input type="date" class="form-control" id="fechaDerivacion" value="2025-05-22">
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaRespuesta" class="form-label fw-bold">FECHA RESPUESTA</label>
+                  <input type="date" class="form-control" id="fechaRespuesta">
+                </div>
+                <div class="col-md-6">
+                  <label for="numeroDiasInforme" class="form-label fw-bold">N° DIAS INFORME</label>
+                  <input type="number" class="form-control" id="numeroDiasInforme">
+                </div>
+                <div class="col-md-6">
+                  <label for="montoInforme" class="form-label fw-bold">MONTO INFORME</label>
+                  <input type="decimal" class="form-control" id="montoInforme">
+                </div>
+              </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INCAPACIDAD TEMPORAL PENDIENTE-->
+<div class="modal fade" id="modalIncTemp" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIncTempLabel">SOLICITUD 0002</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion" checked >
+                  <label class="form-check-label" for="indemnizacion">INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" disabled>
+                  <label class="form-check-label" for="reembolso" disabled>REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="muerte" selected>INCAPACIDAD TEMPORAL</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm w-85" id="cobertura">
+                        <option value=""selected>PENDIENTE</option>
+                        <option value="aprobada">APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                        <option value="aprobada parcial">APROBADA PARCIAL</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="fechaInicio" class="form-label fw-bold">FECHA INICIO</label>
+                  <input type="date" class="form-control" id="fechaInicio" value="2024-01-12">
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaFin" class="form-label fw-bold">FECHA FIN</label>
+                  <input type="date" class="form-control" id="fechaFin" value="2024-02-25">
+                </div>
+              </div>
+              
+
+              <!-- Porcentaje y monto -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="porcentaje" class="form-label fw-bold">N° DE DIAS SOLICITADOS</label>
+                  <input type="number" class="form-control text-center w-75" id="porcentaje" value="44" disabled>
+                </div>
+                <div class="col-md-6">
+                  <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(*)</label>
+                  <input type="text" class="form-control text-center" id="montoCarta" value="1550.00" disabled>
+                </div>
+                <hr>
+                <div class="col-md-6">
+                  <label for="porcentaje" class="form-label fw-bold">N° DE DIAS APROBADOS</label>
+                  <input type="number" class="form-control text-center w-75" id="porcentaje" >
+                </div>
+                <div class="col-md-6">
+                  <label for="montoCarta" class="form-label fw-bold">MONTO APROBADO(*)</label>
+                  <input type="text" class="form-control text-center" id="montoCarta" disabled>
+                </div>
+              </div>
+            
+
+            </div>
+
+            <!-- Columna derecha: documentación requerida -->
+            <div class="col-md-6">
+              <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+              <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                  <thead class="table-light text-center">
+                    <tr>
+                      <th style="width: 30px;">#</th>
+                      <th style="width: 30px;">Subido</th>
+                      <th style="width: 30px;">Fecha de Recepción</th>
+                      <th>ARCHIVO</th>
+                      <th style="width: 60px;">OPC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td class="text-center"><i class="bi bi-file-text"></i></td>
+                      <td>06/05/2025</td>
+                      <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td></td>
+                      <td></td>
+                      <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td></td>
+                      <td></td>
+                      <td>HISTORIA CLINICA</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td></td>
+                      <td></td>
+                      <td>CERTIFICADO MEDICO</td>
+                      <td class="text-center">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ☰
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Agrega más filas según sea necesario -->
+                  </tbody>
+                </table>
+              </div>
+              
+              <div  class="row g-3 mb-3 mt-3">
+                <div class="col-md-6">
+                  <label class="form-check-label" for="validarDerivacionLabel">DERIVACION INR</label>
+                  <input class="form-check-input" type="checkbox" id="validarDerivacion" >
+                </div>
+                
+                  <div id="informe" class="col-md-6">
+                    <button class="btn btn-success btn-sm">Adjuntar Informe</button>
+                  </div>
+                
+              </div>
+              <div id="derivacionInr">
+               <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="fechaDerivacion" class="form-label fw-bold">FECHA DERIVACION(*)</label>
+                  <input type="date" class="form-control" id="fechaDerivacion">
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaRespuesta" class="form-label fw-bold">FECHA RESPUESTA</label>
+                  <input type="date" class="form-control" id="fechaRespuesta">
+                </div>
+                <div class="col-md-6">
+                  <label for="numeroDiasInforme" class="form-label fw-bold">N° DIAS INFORME</label>
+                  <input type="number" class="form-control" id="numeroDiasInforme">
+                </div>
+                <div class="col-md-6">
+                  <label for="montoInforme" class="form-label fw-bold">MONTO INFORME</label>
+                  <input type="decimal" class="form-control" id="montoInforme">
+                </div>
+              </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INVALIDEZ PERMANENTE APROBADA-->
+<div class="modal fade" id="modalInvPer" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalInvPerLabel">SOLICITUD IT-0002</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion" checked >
+                  <label class="form-check-label" for="indemnizacion">INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" disabled>
+                  <label class="form-check-label" for="reembolso" disabled>REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="muerte" selected>INVALIDEZ PERMANENTE</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value="pendiente">PENDIENTE</option>
+                        <option value="aprobada" selected>APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            
+<div class="col-md-12">
+  <!-- Condiciones -->
+  <div class="col-md-12 d-flex align-items-end mb-2">
+    <div class="col-md-3">
+      <div class="row"> 
+        <div class="col">
+          <input class="form-check-input" type="radio" name="tipoCobertura" id="parcial" checked>
+          <label class="form-check-label" for="parcial" >PARCIAL</label>
+        </div>
+        <div class="col">
+          <input class="form-check-input" type="radio" name="tipoCobertura" id="total" disabled >
+          <label class="form-check-label" for="total" disabled>TOTAL</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+</div>
+<hr>
+<div class="col-md-6"> 
+  <!-- Condiciones -->
+  <div class="mb-3">
+    <label class="fw-bold">CONDICIÓN (*)</label>
+    <div class="border p-2" style="height: 120px; overflow-y: auto;">
+      <table class="table table-sm">
+        <tr>
+          <td><input class="form-check-input" type="checkbox" id="cond1" checked></td>
+          <td><label class="form-check-label" for="cond1">Estado absoluto e incurable de alienación mental</label></td>                    </td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td><input class="form-check-input" type="checkbox" id="cond1" checked></td>
+          <td><label class="form-check-label" for="cond1">Fractura incurable de la columna vertebral</label></td>                    </td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td><input class="form-check-input" type="checkbox" id="cond1"></td>
+          <td><label class="form-check-label" for="cond1">Pérdida total de los ojos</label></td>
+          <td>20%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Porcentaje y monto -->
+  <div class="row g-3 mb-3">
+    <div class="col-md-5">
+      <label for="porcentaje" class="form-label fw-bold">% DE INDEMNIZACION (*)</label>
+      <input type="number" class="form-control text-center" id="porcentaje" value="100" disabled>
+    </div>
+    <div class="col-md-7">
+      <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+      <input type="text" class="form-control w-50" id="montoCarta" value="10000.00" disabled>
+    </div>
+  </div>
+<hr>
+<div class="row g-3 mb-3">
+  <div class="col-md-5">
+    <label for="porcentaje" class="form-label fw-bold">% DE INDEMNIZACION (*)</label>
+    <input type="number" class="form-control text-center" id="porcentaje" value="100">
+  </div>
+  <div class="col-md-7">
+    <label for="montoCarta" class="form-label fw-bold">MONTO APROBADO(*)</label>
+    <input type="text" class="form-control w-50" id="montoCarta" value="10000.00" disabled>
+  </div>
+</div>
+
+
+</div>
+
+<!-- Columna derecha: documentación requerida -->
+<div class="col-md-6">
+  <label class="fw-bold">DOCUMENTACIÓN REQUERIDA</label>
+  <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+    <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 11px;">
+      <thead class="table-light text-center">
+        <tr>
+          <th style="width: 30px;">#</th>
+          <th style="width: 30px;">Subido</th>
+          <th style="width: 30px;">Fecha de Recepción</th>
+          <th>ARCHIVO</th>
+          <th style="width: 60px;">OPC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><i class="bi bi-file-text"></i></td>
+          <td>20/05/2025</td>
+          <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><i class="bi bi-file-text"></i></td>
+          <td>20/05/2025</td>
+          <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><i class="bi bi-file-text"></i></td>
+          <td>20/05/2025</td>
+          <td>HISTORIA CLINICA</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><i class="bi bi-file-text"></i></td>
+          <td>20/05/2025</td>
+          <td>CERTIFICADO MEDICO</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <!-- Agrega más filas según sea necesario -->
+      </tbody>
+    </table>
+  </div>
+  
+  <div id="" class="row g-3 mb-3 mt-3">
+    <div class="col-md-6">
+      <label class="form-check-label" for="validarDerivacionALabel">DERIVACION INR</label>
+      <input class="form-check-input" type="checkbox" >
+    </div>
+    
+    
+    
+  </div>
+</div>
+
+
+           
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INVALIDEZ PERMANENTE PENDIENTE-->
+<div class="modal fade" id="modalInvPerPen" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalInvPerPenLabel">SOLICITUD 0002</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion" checked >
+                  <label class="form-check-label" for="indemnizacion">INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" disabled>
+                  <label class="form-check-label" for="reembolso" disabled>REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="muerte" selected>INCAPACIDAD TEMPORAL</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value=""selected>PENDIENTE</option>
+                        <option value="aprobada">APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            
+<div class="col-md-12">
+  <!-- Condiciones -->
+  <div class="col-md-12 d-flex align-items-end mb-2">
+    <div class="col-md-3">
+      <div class="row"> 
+        <div class="col">
+          <input class="form-check-input" type="radio" name="tipoCobertura" id="parcial" disabled>
+          <label class="form-check-label" for="parcial" disabled>PARCIAL</label>
+        </div>
+        <div class="col">
+          <input class="form-check-input" type="radio" name="tipoCobertura" id="total" checked>
+          <label class="form-check-label" for="total">TOTAL</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+</div>
+<hr>
+<div class="col-md-6"> 
+  <!-- Condiciones -->
+  <div class="mb-3">
+    <label class="fw-bold">CONDICIÓN (*)</label>
+    <div class="border p-2" style="height: 120px; overflow-y: auto;">
+      <table class="table table-sm">
+        <tr>
+          <td><input class="form-check-input" type="checkbox" id="cond1" checked></td>
+          <td><label class="form-check-label" for="cond1">Estado absoluto e incurable de alienación mental</label></td>                    </td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td><input class="form-check-input" type="checkbox" id="cond1" checked></td>
+          <td><label class="form-check-label" for="cond1">Fractura incurable de la columna vertebral</label></td>                    </td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td><input class="form-check-input" type="checkbox" id="cond1"></td>
+          <td><label class="form-check-label" for="cond1">Pérdida total de los ojos</label></td>
+          <td>20%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Porcentaje y monto -->
+  <div class="row g-3 mb-3">
+    <div class="col-md-5">
+      <label for="porcentaje" class="form-label fw-bold">% DE INDEMNIZACION (*)</label>
+      <input type="number" class="form-control text-center" id="porcentaje" value="100" disabled>
+    </div>
+    <div class="col-md-7">
+      <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+      <input type="text" class="form-control w-50 text-center" id="montoCarta" value="500.00" disabled>
+    </div>
+  </div>
+  <hr>
+  <div class="row g-3 mb-3">
+    <div class="col-md-5">
+      <label for="porcentaje" class="form-label fw-bold">% DE INDEMNIZACION (*)</label>
+      <input type="number" class="form-control text-center" id="porcentaje">
+    </div>
+    <div class="col-md-7">
+      <label for="montoCarta" class="form-label fw-bold">MONTO APROBADO(*)</label>
+      <input type="text" class="form-control w-50 text-center" id="montoCarta" disabled>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- Columna derecha: documentación requerida -->
+<div class="col-md-6">
+  <label class="fw-bold">DOCUMENTACIÓN REQUERIDA</label>
+  <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+    <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 11px;">
+      <thead class="table-light text-center">
+        <tr>
+          <th style="width: 30px;">#</th>
+          <th style="width: 30px;">Subido</th>
+          <th>ARCHIVO</th>
+          <th style="width: 60px;">OPC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td></td>
+          <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td></td>
+          <td>HISTORIA CLINICA</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td></td>
+          <td>CERTIFICADO MEDICO</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ☰
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <!-- Agrega más filas según sea necesario -->
+      </tbody>
+    </table>
+  </div>
+<br>
+  <div  class="row g-3 mb-3 mt-1">
+    <div class="col-md-6">
+      <label class="form-check-label" for="validarDerivacionInvPerLabel">DERIVACION INR</label>
+      <input class="form-check-input" type="checkbox" id="validarDerivacionInvPer" >
+    </div>
+    
+      <div id="informeInvPer" class="col-md-6">
+        <button class="btn btn-success btn-sm">Adjuntar Informe</button>
+      </div>
+    
+  </div>
+  <div id="derivacionInrInvPer">
+   <div class="row g-3 mb-3">
+    <div class="col-md-6">
+      <label for="fechaDerivacion" class="form-label fw-bold">FECHA DERIVACION(*)</label>
+      <input type="date" class="form-control" id="fechaDerivacionInvPer">
+    </div>
+    <div class="col-md-6">
+      <label for="fechaRespuesta" class="form-label fw-bold">FECHA RESPUESTA</label>
+      <input type="date" class="form-control" id="fechaRespuestaInvPer">
+    </div>
+    <div class="col-md-6">
+      <label for="numeroDiasInforme" class="form-label fw-bold">N° DIAS INFORME</label>
+      <input type="number" class="form-control" id="numeroDiasInformeInvPer">
+    </div>
+    <div class="col-md-6">
+      <label for="montoInforme" class="form-label fw-bold">MONTO INFORME</label>
+      <input type="decimal" class="form-control" id="montoInformeInvPer">
+    </div>
+  </div>
+  </div>
+
+
+</div>
+
+
+           
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal INDEMNIZACION MUERTE -->
+<div class="modal fade" id="modalIndMuerte" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIndMuerteLabel">SOLICITUD IM-0001</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion" checked >
+                  <label class="form-check-label" for="indemnizacion">INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" disabled>
+                  <label class="form-check-label" for="reembolso" disabled>REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="muerte" selected>MUERTE</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value=""selected>PENDIENTE</option>
+                        <option value="aprobada">APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Porcentaje y monto -->
+               <div class="row g-3 mb-3">
+                 <div class="col-md-7">
+                   <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+                   <input type="text" class="form-control w-50 text-center" id="montoCarta" value="21400.00">
+                 </div>
+               </div>
+ 
+             </div>
+             <!-- Columna derecha: documentación requerida -->
+             <div class="col-md-6">
+               <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+               <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                 <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                   <thead class="table-light text-center">
+                     <tr>
+                       <th style="width: 30px;">#</th>
+                       <th style="width: 30px;">Subido</th>
+                       <th style="width: 30px;">Fecha Recepción</th>
+                       <th>ARCHIVO</th>
+                       <th style="width: 60px;">OPC</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>1</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>2</td>
+                       <td></td>
+                       <td></td>
+                       <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>3</td>
+                       <td></td>
+                       <td></td>
+                       <td>HISTORIA CLINICA</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>4</td>
+                       <td></td>
+                       <td></td>
+                       <td>CERTIFICADO MEDICO</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">>📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal REEMBOLSO SEPELIO APROBADA 1-->
+<div class="modal fade" id="modalRemSepelio" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIndSepelioLabel">SOLICITUD SE-0001</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion"  disabled>
+                  <label class="form-check-label" for="indemnizacion" disabled>INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" checked>
+                  <label class="form-check-label" for="reembolso" >REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="sepelio" selected>SEPELIO</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value="pendiente">PENDIENTE</option>
+                        <option value="aprobada" selected>APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Porcentaje y monto -->
+               <div class="row g-3 mb-3">
+                 <div class="col-md-7">
+                   <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+                   <input type="text" class="form-control w-50 text-center" id="montoCarta" value="800.00">
+                 </div>
+               </div>
+ 
+             </div>
+             <!-- Columna derecha: documentación requerida -->
+             <div class="col-md-6">
+               <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+               <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                 <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                   <thead class="table-light text-center">
+                     <tr>
+                       <th style="width: 30px;">#</th>
+                       <th style="width: 30px;">Subido</th>
+                       <th style="width: 30px;">Fecha Recepción</th>
+                       <th>ARCHIVO</th>
+                       <th style="width: 60px;">OPC</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>1</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>2</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>3</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>HISTORIA CLINICA</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>4</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>CERTIFICADO MEDICO</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">>📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal REEMBOLSO SEPELIO APROBADA 2-->
+<div class="modal fade" id="modalRemSepelio2" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIndSepelio2Label">SOLICITUD SE-0002</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion"  disabled>
+                  <label class="form-check-label" for="indemnizacion" disabled>INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" checked>
+                  <label class="form-check-label" for="reembolso" >REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="sepelio" selected>SEPELIO</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value="pendiente">PENDIENTE</option>
+                        <option value="aprobada" selected>APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Porcentaje y monto -->
+               <div class="row g-3 mb-3">
+                 <div class="col-md-7">
+                   <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+                   <input type="text" class="form-control w-50 text-center" id="montoCarta" value="200.00">
+                 </div>
+               </div>
+ 
+             </div>
+             <!-- Columna derecha: documentación requerida -->
+             <div class="col-md-6">
+               <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+               <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                 <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                   <thead class="table-light text-center">
+                     <tr>
+                       <th style="width: 30px;">#</th>
+                       <th style="width: 30px;">Subido</th>
+                       <th style="width: 30px;">Fecha Recepción</th>
+                       <th>ARCHIVO</th>
+                       <th style="width: 60px;">OPC</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>1</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>2</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>3</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>HISTORIA CLINICA</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>4</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>CERTIFICADO MEDICO</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">>📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal REEMBOLSO SEPELIO PENDIENTE-->
+<div class="modal fade" id="modalRemSepelioPen" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalIndSepelioPenLabel">SOLICITUD SE-0002</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row gy-3 align-items-center">
+                <!-- Tipo de solicitud -->
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="indemnizacion"  disabled>
+                  <label class="form-check-label" for="indemnizacion" disabled>INDEMNIZACION</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="tipoSolicitud" id="tipoSolicitud" value="reembolso" checked>
+                  <label class="form-check-label" for="reembolso" >REEMBOLSO</label>
+                </div>
+              </div>
+
+              <!-- Cobertura y tipo -->
+              <div class="col-md-5 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">COBERTURA(*)</label>
+                    <select class="form-select form-select-sm w-50" id="cobertura">
+                      <option value="sepelio" selected>SEPELIO</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-3 d-flex align-items-center">
+                    <label for="cobertura" class="form-label fw-bold me-3">ESTADO</label>
+                    <select class="form-select form-select-sm" id="cobertura">
+                        <option value="pendiente" selected>PENDIENTE</option>
+                        <option value="aprobada">APROBADA</option>
+                        <option value="rechazada">RECHAZADA</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Porcentaje y monto -->
+               <div class="row g-3 mb-3">
+                 <div class="col-md-7">
+                   <label for="montoCarta" class="form-label fw-bold">MONTO SOLICITADO/CARTA(S/) (*)</label>
+                   <input type="text" class="form-control w-50 text-center" id="montoCarta" value="200.00">
+                 </div>
+               </div>
+ 
+             </div>
+             <!-- Columna derecha: documentación requerida -->
+             <div class="col-md-6">
+               <label class="fw-bold mb-2">DOCUMENTACIÓN REQUERIDA</label>
+               <div class="table-responsive border" style="max-height: 400px; overflow-y: auto;">
+                 <table class="table table-sm table-bordered align-middle mb-0" style="font-size: 10px;">
+                   <thead class="table-light text-center">
+                     <tr>
+                       <th style="width: 30px;">#</th>
+                       <th style="width: 30px;">Subido</th>
+                       <th style="width: 30px;">Fecha Recepción</th>
+                       <th>ARCHIVO</th>
+                       <th style="width: 60px;">OPC</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>1</td>
+                       <td class="text-center"><i class="bi bi-file-text"></i></td>
+                       <td>06/05/2024</td>
+                       <td>COPIA LEGIBLE Y COMPLETA DEL DNI DEL BENEFICIARIO(A)</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>2</td>
+                       <td></td>
+                       <td></td>
+                       <td>COPIA SIMPLE DEL DNI DE LOS BENEFICIARIOS QUE FIGURAN EN LA DECLARACIÓN DE BENEFICIARIOS</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>3</td>
+                       <td></td>
+                       <td></td>
+                       <td>HISTORIA CLINICA</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>4</td>
+                       <td></td>
+                       <td></td>
+                       <td>CERTIFICADO MEDICO</td>
+                       <td class="text-center">
+                         <div class="dropdown">
+                           <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                             ☰
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li><a class="dropdown-item" href="#" onclick="abrirModalSubirArchivo(event)">>📤 Subir Archivo</a></li>
+                             <li><a class="dropdown-item text-danger" href="#">🗑️ Quitar</a></li>
+                           </ul>
+                         </div>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label for="observacion" class="form-label fw-bold">OBSERVACIÓN</label>
+              <textarea class="form-control" id="observacion" rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success fw-bold px-4">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

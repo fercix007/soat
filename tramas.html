@@ -1,0 +1,1631 @@
+<style>
+  #derivacionInr {
+    display: none;
+  }
+  #informe {
+    display: none;
+  }
+  #derivacionInrInvPer {
+    display: none;
+  }
+  #informeInvPer {
+    display: none;
+  }
+
+  .trama-sheet {
+    overflow-x: auto !important;
+    border: 1px solid #9fb6d9;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px #d9e5f7;
+  }
+
+  .trama-grid {
+    width: max-content;
+    min-width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 10px;
+    line-height: 1.15;
+    white-space: nowrap;
+    color: #1f2937;
+  }
+
+  .trama-grid thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 4px 6px;
+    border: 1px solid #7ea1d3;
+    background: linear-gradient(#dbe8fb, #c4d7f3);
+    color: #123a6b;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .trama-grid tbody td {
+    padding: 3px 6px;
+    border: 1px solid #b8cbe6;
+    background: #fff;
+  }
+
+  .trama-grid tbody tr:nth-child(even) td {
+    background: #f7fbff;
+  }
+
+  .trama-grid tbody tr:hover td {
+    background: #eaf2ff;
+  }
+
+  .trama-grid .text-start {
+    text-align: left;
+  }
+
+  .trama-hidden {
+    display: none;
+  }
+
+  .download-status {
+    min-height: 24px;
+    font-size: 0.875rem;
+    color: #1d4ed8;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .download-status.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .download-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    animation: spin-download 0.8s linear infinite;
+    margin-right: 6px;
+  }
+
+  .table-feedback {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #475569;
+  }
+
+  @keyframes spin-download {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  </style>
+<h4 class="mb-4">Tramas</h4>
+  <form class="mb-4" id="tramasForm">
+    <div class="row g-3">
+      <div class="col-md-2">
+        <label class="form-label">TIPO</label>
+        <select class="form-select form-select-sm w-auto" id="tipoReporte">
+          <option value="">[Seleccione]</option>
+          <option value="APERTURA">APERTURA</option>
+          <option value="RESERVA">RESERVA</option>
+          <option value="LIQUIDACION">LIQUIDACION</option>
+        </select>
+        
+      </div>
+      
+      <div class="col-md-2">
+        <label class="form-label">Fecha Desde</label>
+        <input type="date" class="form-control form-control-sm w-auto" id="fechaDesde">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Fecha Hasta</label>
+        <input type="date" class="form-control form-control-sm w-auto" id="fechaHasta">
+      </div>
+      <div class="col-md-2 d-flex align-items-end justify-content-end">
+         <button type="submit" class="btn btn-primary btn-sm me-2" id="btnBuscar">BUSCAR</button> 
+         <button type="button" class="btn btn-secondary btn-sm" id="btnDescargar" disabled>DESCARGAR</button>
+      </div>
+     
+      
+    </div>
+    <div class="download-status mt-2" id="downloadStatus" aria-live="polite"></div>
+    <div class="table-feedback" id="tableFeedback"></div>
+  </form>
+
+  <div class="trama-sheet w-100 trama-hidden" data-table-wrap="tramaApertura">
+    <table class="table table-sm align-middle text-center trama-grid" id="tramaApertura">
+      <thead>
+        <tr>
+          <th>FECHA SINIESTRO</th>
+          <th>HORA SINIESTRO</th>
+          <th>RAMO</th>
+          <th>NRO SINIESTRO</th>
+          <th>NRO POLIZA</th>
+          <th>PLACA</th>
+          <th>NRO CASO</th>
+          <th>NRO AUDITORIA</th>
+          <th>NOMBRES</th>
+          <th>APELLIDO PATERNO</th>
+          <th>APELLIDO MATERNO</th>
+          <th>TIPO DOCUMENTO</th>
+          <th>NRO DOCUMENTO</th>
+          <th>IPRESS</th>
+          <th>RUC IPRESS</th>
+          <th>COD. CAUSA SINIESTRO</th>
+          <th>FECHA DE DENUNCIO</th>
+          <th>HORA RECEPCION</th>
+          <th>OCUPANTE</th>
+          <th>FALLECIDO</th>
+          <th>FECHA FALLECIDO</th>
+          <th>UBIGEO</th>
+          <th>ESTADO SINIESTRO</th>
+          <th>CODIGO COMISARIA</th>
+          <th>PATERNO CONDUCTOR</th>
+          <th>MATERNO CONDUCTOR</th>
+          <th>NOMBRES CONDUCTOR</th>
+          <th>MOTIVO DE RECHAZO</th>
+          <th>TIPO ATENCION</th>
+          <th>FECHA DE APERTURA</th>
+          <th>LUGAR DE OCURRENCIA</th>
+          <th>FECHA DE NACIMIENTO CONDUCTOR</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>11/09/2024</td>
+          <td>064551</td>
+          <td>1</td>
+          <td>12502</td>
+          <td>700474687</td>
+          <td>ABM133</td>
+          <td>640</td>
+          <td>1</td>
+          <td>MAX ALESSANDER</td>
+          <td>HEREDIA</td>
+          <td>RIVERA</td>
+          <td>1</td>
+          <td>78128764</td>
+          <td>CLINICA LIMATAMBO - SAN JUAN DE LURIGANCHO</td>
+          <td>20101098681</td>
+          <td>2</td>
+          <td>11/09/2024</td>
+          <td>072211</td>
+          <td>S</td>
+          <td>N</td>
+          <td></td>
+          <td>140137</td>
+          <td>EN INVESTIGACIÓN</td>
+          <td>NO SABE</td>
+          <td>HEREDIA</td>
+          <td>CASTILLO</td>
+          <td>GIOMAR</td>
+          <td></td>
+          <td>E</td>
+          <td>11/09/2024</td>
+          <td>SAN JUAN DE LURIGANCHO</td>
+        </tr>
+        <tr>
+          <td>11/09/2024</td>
+          <td>082016</td>
+          <td>1</td>
+          <td>12503</td>
+          <td>7004920051</td>
+          <td>BNK395</td>
+          <td>641</td>
+          <td>1</td>
+          <td>ROCIO NATHALY</td>
+          <td>PAJARES</td>
+          <td>MONJARRAZ</td>
+          <td>1</td>
+          <td>42244069</td>
+          <td>CLINICA SAN PABLO</td>
+          <td>20107463705</td>
+          <td>1</td>
+          <td>11/09/2024</td>
+          <td>090956</td>
+          <td>S</td>
+          <td>N</td>
+          <td></td>
+          <td>140629</td>
+          <td>EN INVESTIGACIÓN</td>
+          <td>CHACARILLA</td>
+          <td>XXXX</td>
+          <td>XXXX</td>
+          <td>XXXX</td>
+          <td></td>
+          <td>E</td>
+          <td>11/09/2024</td>
+          <td>SURCO</td>
+        </tr>
+        <tr>
+          <td>11/09/2024</td>
+          <td>103052</td>
+          <td>1</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>B4G187</td>
+          <td>642</td>
+          <td>1</td>
+          <td>ADRIANA JANET</td>
+          <td>FALCONI</td>
+          <td>BARBIERI</td>
+          <td>1</td>
+          <td>25776314</td>
+          <td>CENTENARIO PERUANO JAPONESA</td>
+          <td></td>
+          <td>1</td>
+          <td>11/09/2024</td>
+          <td>113907</td>
+          <td>S</td>
+          <td>N</td>
+          <td></td>
+          <td>140104</td>
+          <td>EN INVESTIGACIÓN</td>
+          <td>PUEBLO LIBRE</td>
+          <td>ORE </td>
+          <td>HURTADO</td>
+          <td>CARLOS</td>
+          <td></td>
+          <td>E</td>
+          <td>11/09/2024</td>
+          <td>BREÑA</td>
+        </tr>
+        <tr>
+          <td>16/08/2024</td>
+          <td>174542</td>
+          <td>1</td>
+          <td>12505</td>
+          <td>7005222368</td>
+          <td>EP2290</td>
+          <td>643</td>
+          <td>1</td>
+          <td>GERSON</td>
+          <td>CARBAJAL</td>
+          <td>VILLANUEVA</td>
+          <td>1</td>
+          <td>42968854</td>
+          <td>CLINICA JESUS DEL NORTE</td>
+          <td>20517738701</td>
+          <td>1</td>
+          <td>11/09/2024</td>
+          <td>114526</td>
+          <td>S</td>
+          <td>N</td>
+          <td></td>
+          <td>150101</td>
+          <td>ACEPTADO</td>
+          <td>COMISARIA DE MIRONES</td>
+          <td>CARBAJAL</td>
+          <td>VILLANUEVA</td>
+          <td>GERSON</td>
+          <td></td>
+          <td>E</td>
+          <td>11/09/2024</td>
+          <td>LIMA</td>
+        </tr>
+
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="trama-sheet w-100 trama-hidden" data-table-wrap="tramaReserva">
+    <table class="table table-sm align-middle text-center trama-grid" id="tramaReserva">
+      <thead>
+        <tr>
+            <th>TIPO MOVIMIENTO</th>
+            <th>FECHA MOVIMIENTO</th>
+            <th>NRO SINIESTRO</th>
+            <th>NRO POLIZA</th>
+            <th>NRO CASO</th>
+            <th>COBERTURA</th>
+            <th>NRO CARTA</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO PATERNO</th>
+            <th>APELLIDO MATERNO</th>
+            <th>RAZON SOCIAL</th>
+            <th>TIPO DOCUMENTO IDENTIDAD</th>
+            <th>NRO DOCUMENTO</th>
+            <th>ESPECIALIDAD</th>
+            <th>CODIGO DIAGNOSTICO</th>
+            <th>NOMBRE MEDICO TRATANTE</th>
+            <th>MONEDA</th>
+            <th>MONTO CARTA</th>
+            <th>MONTO ASOCIADO</th>
+            <th>TIPO TRAMA</th>
+            <th>FECHA DE DENUNCIO</th>
+            <th>FECHA DE APERTURA</th>
+            <th>LUGAR DE OCURRENCIA</th>
+            <th>FECHA DE NACIMIENTO</th>
+            <th>IPRESS</th>
+            <th>RUC IPRESS</th>
+            <th>TIPO DE ATENCION</th>
+            <th>COMPLEJIDAD DE DIAGNOSTICO</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R</td>
+          <td>11/09/2024</td>
+          <td>10096</td>
+          <td>7003504999</td>
+          <td>6</td>
+          <td>4</td>
+          <td>3747256</td>
+          <td class="text-start">MARIANO LUIS</td>
+          <td class="text-start">CASTAÑEDA</td>
+          <td class="text-start">RUIZ</td>
+          <td></td>
+          <td>1</td>
+          <td>18177721</td>
+          <td class="text-start">PROCEDIMIENTO QUIRURGICO</td>
+          <td>S52.2</td>
+          <td></td>
+          <td>1</td>
+          <td>4803.17</td>
+          <td>4803.17</td>
+          <td>F</td>
+          <td>16/10/2022</td>
+          <td>16/10/2022</td>
+          <td>120101</td>
+          <td>14/12/1963</td>
+          <td class="text-start">CLINICA SAN ANTONIO DE TRUJILLO</td>
+          <td>20481701709</td>
+          <td>A</td>
+          <td>SEVERO</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12502</td>
+          <td>700474687</td>
+          <td>640</td>
+          <td>4</td>
+          <td>3747244</td>
+          <td class="text-start">MAX ALESSANDER</td>
+          <td class="text-start">HEREDIA</td>
+          <td class="text-start">RIVERA</td>
+          <td></td>
+          <td>1</td>
+          <td>78128764</td>
+          <td class="text-start">EMERGENCIA</td>
+          <td>T00</td>
+          <td></td>
+          <td>1</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>F</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140137</td>
+          <td></td>
+          <td class="text-start">CLINICA LIMATAMBO - SAN JUAN DE LURIGANCHO</td>
+          <td>20101098681</td>
+          <td>E</td>
+          <td>LEVE</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12503</td>
+          <td>7004920051</td>
+          <td>641</td>
+          <td>4</td>
+          <td>3747245</td>
+          <td class="text-start">ROCIO NATHALY</td>
+          <td class="text-start">PAJARES</td>
+          <td class="text-start">MONJARRAZ</td>
+          <td></td>
+          <td>1</td>
+          <td>42244069</td>
+          <td class="text-start">EMERGENCIA</td>
+          <td>T07.X</td>
+          <td></td>
+          <td>1</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>F</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140629</td>
+          <td></td>
+          <td class="text-start">CLINICA SAN PABLO</td>
+          <td>20107463705</td>
+          <td>E</td>
+          <td>LEVE</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>642</td>
+          <td>1</td>
+          <td>3747250</td>
+          <td class="text-start">ADRIANA JANET</td>
+          <td class="text-start">FALCONI</td>
+          <td class="text-start">BARBIERI</td>
+          <td></td>
+          <td>1</td>
+          <td>25776314</td>
+          <td class="text-start">INDEMNIZACION MUERTE</td>
+          <td>XXX</td>
+          <td></td>
+          <td>1</td>
+          <td>20600</td>
+          <td>20600</td>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140104</td>
+          <td></td>
+          <td class="text-start">INDEMNIZACION MUERTE</td>
+          <td></td>
+          <td>A</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>642</td>
+          <td>5</td>
+          <td>3747251</td>
+          <td class="text-start">ADRIANA JANET</td>
+          <td class="text-start">FALCONI</td>
+          <td class="text-start">BARBIERI</td>
+          <td></td>
+          <td>1</td>
+          <td>25776314</td>
+          <td class="text-start">INDEMNIZACION SEPELIO</td>
+          <td>XXX</td>
+          <td></td>
+          <td>1</td>
+          <td>5150</td>
+          <td>5150</td>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140104</td>
+          <td></td>
+          <td class="text-start">INDEMNIZACION SEPELIO</td>
+          <td></td>
+          <td>A</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>642</td>
+          <td>4</td>
+          <td>3747254</td>
+          <td class="text-start">ADRIANA JANET</td>
+          <td class="text-start">FALCONI</td>
+          <td class="text-start">BARBIERI</td>
+          <td></td>
+          <td>1</td>
+          <td>25776314</td>
+          <td class="text-start">EMERGENCIA</td>
+          <td>T07.X</td>
+          <td></td>
+          <td>1</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>F</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140104</td>
+          <td></td>
+          <td class="text-start">CENTENARIO PERUANO JAPONESA</td>
+          <td></td>
+          <td>E</td>
+          <td>LEVE</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>11688</td>
+          <td>7004694193</td>
+          <td>227</td>
+          <td>4</td>
+          <td>3747247</td>
+          <td class="text-start">IDANIA JANET</td>
+          <td class="text-start">PALACIOS</td>
+          <td class="text-start">GOZAR</td>
+          <td></td>
+          <td>1</td>
+          <td>44208662</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S40.8</td>
+          <td></td>
+          <td>1</td>
+          <td>50</td>
+          <td>50</td>
+          <td>F</td>
+          <td>28/02/2024</td>
+          <td>11/03/2024</td>
+          <td>140809</td>
+          <td>15/09/1972</td>
+          <td class="text-start">CLINICA SAN GABRIEL</td>
+          <td>20505018509</td>
+          <td>A</td>
+          <td>LEVE</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>11817</td>
+          <td>7004238698</td>
+          <td>306</td>
+          <td>4</td>
+          <td>3747261</td>
+          <td class="text-start">EDDY JANNETH</td>
+          <td class="text-start">ZAVALETA</td>
+          <td class="text-start">MUNDACA</td>
+          <td></td>
+          <td>1</td>
+          <td>18011563</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S06</td>
+          <td></td>
+          <td>1</td>
+          <td>150</td>
+          <td>150</td>
+          <td>F</td>
+          <td>10/04/2024</td>
+          <td>10/04/2024</td>
+          <td>120102</td>
+          <td>13/06/1996</td>
+          <td class="text-start">CLINICA FATIMA</td>
+          <td>20481829411</td>
+          <td>A</td>
+          <td>MODERADO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12157</td>
+          <td>7005121795</td>
+          <td>451</td>
+          <td>4</td>
+          <td>3745829</td>
+          <td class="text-start">CELESTINO</td>
+          <td class="text-start">CONDORI</td>
+          <td class="text-start">MACHACA</td>
+          <td></td>
+          <td>1</td>
+          <td>01699292</td>
+          <td class="text-start">HOSPITALIZACION</td>
+          <td>S06.4</td>
+          <td></td>
+          <td>1</td>
+          <td>7623.4</td>
+          <td>7623.4</td>
+          <td>F</td>
+          <td>16/06/2024</td>
+          <td>16/06/2024</td>
+          <td>201301</td>
+          <td>07/05/1972</td>
+          <td class="text-start">CLINICA AMERICANA DE JULIACA</td>
+          <td>20321856145</td>
+          <td>H</td>
+          <td>MODERADO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12300</td>
+          <td>7004746465</td>
+          <td>531</td>
+          <td>4</td>
+          <td>3747255</td>
+          <td class="text-start">GONZALO ENRIQUE</td>
+          <td class="text-start">PORTOCARRERO</td>
+          <td class="text-start">SALCEDO</td>
+          <td></td>
+          <td>1</td>
+          <td>47039654</td>
+          <td class="text-start">RAYOS X</td>
+          <td>S52.1</td>
+          <td></td>
+          <td>1</td>
+          <td>577.02</td>
+          <td>577.02</td>
+          <td>F</td>
+          <td>19/07/2024</td>
+          <td>19/07/2024</td>
+          <td>80612</td>
+          <td>22/02/1999</td>
+          <td class="text-start">ARTHRO MEDS</td>
+          <td></td>
+          <td>A</td>
+          <td>SEVERO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12393</td>
+          <td>7005471201</td>
+          <td>579</td>
+          <td>4</td>
+          <td>3747258</td>
+          <td class="text-start">ROLANDO C</td>
+          <td class="text-start">ROMUALDO</td>
+          <td class="text-start">DIAZ</td>
+          <td></td>
+          <td>1</td>
+          <td>08238270</td>
+          <td class="text-start">TERAPIA FISICA</td>
+          <td>S13.4</td>
+          <td></td>
+          <td>1</td>
+          <td>160</td>
+          <td>160</td>
+          <td>F</td>
+          <td>10/08/2024</td>
+          <td>10/08/2024</td>
+          <td>140126</td>
+          <td>08/09/1982</td>
+          <td class="text-start">CLINICA JESUS DEL NORTE</td>
+          <td>20517738701</td>
+          <td>A</td>
+          <td>MODERADO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12394</td>
+          <td>7005471201</td>
+          <td>579</td>
+          <td>4</td>
+          <td>3747259</td>
+          <td class="text-start">MARTINA</td>
+          <td class="text-start">ALVA</td>
+          <td class="text-start">ESCOBEDO</td>
+          <td></td>
+          <td>1</td>
+          <td>42406965</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S13.4</td>
+          <td></td>
+          <td>1</td>
+          <td>309</td>
+          <td>309</td>
+          <td>F</td>
+          <td>10/08/2024</td>
+          <td>10/08/2024</td>
+          <td>140126</td>
+          <td>08/09/1982</td>
+          <td class="text-start">CLINICA JESUS DEL NORTE</td>
+          <td>20517738701</td>
+          <td>A</td>
+          <td>MODERADO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12398</td>
+          <td>7005471201</td>
+          <td>579</td>
+          <td>4</td>
+          <td>3747253</td>
+          <td class="text-start">ROCIO MERCEDES</td>
+          <td class="text-start">CARMONA</td>
+          <td class="text-start">SANDOVAL</td>
+          <td></td>
+          <td>1</td>
+          <td>40267259</td>
+          <td class="text-start">MATERIAL ORTOPEDICO</td>
+          <td>S92.7</td>
+          <td></td>
+          <td>1</td>
+          <td>200</td>
+          <td>200</td>
+          <td>F</td>
+          <td>10/08/2024</td>
+          <td>10/08/2024</td>
+          <td>140126</td>
+          <td>08/09/1982</td>
+          <td class="text-start">REEMBOLSO</td>
+          <td></td>
+          <td>A</td>
+          <td>MODERADO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12415</td>
+          <td>7004586504</td>
+          <td>589</td>
+          <td>4</td>
+          <td>3747260</td>
+          <td class="text-start">SEGUNDINO</td>
+          <td class="text-start">ACEVEDO</td>
+          <td class="text-start">ASUNCION</td>
+          <td></td>
+          <td>1</td>
+          <td>45793766</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S49.9</td>
+          <td></td>
+          <td>1</td>
+          <td>150</td>
+          <td>150</td>
+          <td>F</td>
+          <td>14/08/2024</td>
+          <td>14/08/2024</td>
+          <td>120705</td>
+          <td>28/09/1994</td>
+          <td class="text-start">CLINICA FATIMA</td>
+          <td>20481829411</td>
+          <td>A</td>
+          <td>LEVE</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12417</td>
+          <td>7005464273</td>
+          <td>590</td>
+          <td>4</td>
+          <td>3747262</td>
+          <td class="text-start">TERESA ELIZABETH</td>
+          <td class="text-start">REYNA</td>
+          <td class="text-start">SALAS VDA DE FLORENTINI</td>
+          <td></td>
+          <td>1</td>
+          <td>07395276</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S09.9</td>
+          <td></td>
+          <td>1</td>
+          <td>300</td>
+          <td>300</td>
+          <td>F</td>
+          <td>14/08/2024</td>
+          <td>14/08/2024</td>
+          <td>140101</td>
+          <td>09/05/1981</td>
+          <td class="text-start">CLINICA MAISON DE SANTE - LIMA</td>
+          <td>20101165389</td>
+          <td>A</td>
+          <td>LEVE</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12453</td>
+          <td>7004717484</td>
+          <td>609</td>
+          <td>4</td>
+          <td>3747248</td>
+          <td class="text-start">AYDE</td>
+          <td class="text-start">PILLACA</td>
+          <td class="text-start">REMACHE</td>
+          <td></td>
+          <td>1</td>
+          <td>10097187</td>
+          <td class="text-start">HOSPITALIZACION</td>
+          <td>S22.4</td>
+          <td></td>
+          <td>1</td>
+          <td>6830</td>
+          <td>6830</td>
+          <td>F</td>
+          <td>24/08/2024</td>
+          <td>24/08/2024</td>
+          <td>50101</td>
+          <td></td>
+          <td class="text-start">CLINICA SANTA MARTHA DEL SUR</td>
+          <td>20517737560</td>
+          <td>H</td>
+          <td>MODERADO</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12492</td>
+          <td>7004706011</td>
+          <td>634</td>
+          <td>4</td>
+          <td>3747249</td>
+          <td class="text-start">JOSE LUIS</td>
+          <td class="text-start">TORRES</td>
+          <td class="text-start">BYRNE</td>
+          <td></td>
+          <td>1</td>
+          <td>41209481</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S30.0</td>
+          <td></td>
+          <td>1</td>
+          <td>500</td>
+          <td>500</td>
+          <td>F</td>
+          <td>07/09/2024</td>
+          <td>07/09/2024</td>
+          <td>240104</td>
+          <td>15/01/1982</td>
+          <td class="text-start">CLINICA PROVIDENCIA</td>
+          <td>20477983708</td>
+          <td>A</td>
+          <td>LEVE</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  
+
+  <div class="trama-sheet w-100 trama-hidden" data-table-wrap="tramaLiquidacion">
+    <table class="table table-sm align-middle text-center trama-grid" id="tramaLiquidacion">
+      <thead>
+        <tr>
+          <th>TIPO MOVIMIENTO</th>
+          <th>FECHA MOVIMIENTO</th>
+          <th>NRO SINIESTRO</th>
+          <th>NRO POLIZA</th>
+          <th>NRO CASO</th>
+          <th>COBERTURA</th>
+          <th>NRO CARTA</th>
+          <th>NOMBRE</th>
+          <th>APELLIDO PATERNO</th>
+          <th>APELLIDO MATERNO</th>
+          <th>RAZON SOCIAL</th>
+          <th>TIPO DOCUMENTO IDENTIDAD</th>
+          <th>NRO DOCUMENTO</th>
+          <th>ESPECIALIDAD</th>
+          <th>CODIGO DIAGNOSTICO</th>
+          <th>NOMBRE MEDICO TRATANTE</th>
+          <th>MONEDA</th>
+          <th>MONTO CARTA</th>
+          <th>MONTO ASOCIADO</th>
+          <th>TIPO TRAMA</th>
+          <th>FECHA DE DENUNCIO</th>
+          <th>FECHA DE APERTURA</th>
+          <th>LUGAR DE OCURRENCIA</th>
+          <th>FECHA DE NACIMIENTO</th>
+          <th>IPRESS</th>
+          <th>RUC IPRESS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R</td>
+          <td>11/09/2024</td>
+          <td>10096</td>
+          <td>7003504999</td>
+          <td>6</td>
+          <td>4</td>
+          <td>3747256</td>
+          <td class="text-start">MARIANO LUIS</td>
+          <td class="text-start">CASTAÑEDA</td>
+          <td class="text-start">RUIZ</td>
+          <td></td>
+          <td>1</td>
+          <td>18177721</td>
+          <td class="text-start">PROCEDIMIENTO QUIRURGICO</td>
+          <td>S52.2</td>
+          <td></td>
+          <td>1</td>
+          <td>4803.17</td>
+          <td>4803.17</td>
+          <td>F</td>
+          <td>16/10/2022</td>
+          <td>16/10/2022</td>
+          <td>120101</td>
+          <td>14/12/1963</td>
+          <td class="text-start">CLINICA SAN ANTONIO DE TRUJILLO</td>
+          <td>20481701709</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12502</td>
+          <td>700474687</td>
+          <td>640</td>
+          <td>4</td>
+          <td>3747244</td>
+          <td class="text-start">MAX ALESSANDER</td>
+          <td class="text-start">HEREDIA</td>
+          <td class="text-start">RIVERA</td>
+          <td></td>
+          <td>1</td>
+          <td>78128764</td>
+          <td class="text-start">EMERGENCIA</td>
+          <td>T00</td>
+          <td></td>
+          <td>1</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>F</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140137</td>
+          <td></td>
+          <td class="text-start">CLINICA LIMATAMBO - SAN JUAN DE LURIGANCHO</td>
+          <td>20101098681</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12503</td>
+          <td>7004920051</td>
+          <td>641</td>
+          <td>4</td>
+          <td>3747245</td>
+          <td class="text-start">ROCIO NATHALY</td>
+          <td class="text-start">PAJARES</td>
+          <td class="text-start">MONJARRAZ</td>
+          <td></td>
+          <td>1</td>
+          <td>42244069</td>
+          <td class="text-start">EMERGENCIA</td>
+          <td>T07.X</td>
+          <td></td>
+          <td>1</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>F</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140629</td>
+          <td></td>
+          <td class="text-start">CLINICA SAN PABLO</td>
+          <td>20107463705</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>642</td>
+          <td>1</td>
+          <td>3747250</td>
+          <td class="text-start">ADRIANA JANET</td>
+          <td class="text-start">FALCONI</td>
+          <td class="text-start">BARBIERI</td>
+          <td></td>
+          <td>1</td>
+          <td>25776314</td>
+          <td class="text-start">INDEMNIZACION MUERTE</td>
+          <td>XXX</td>
+          <td></td>
+          <td>1</td>
+          <td>20600</td>
+          <td>20600</td>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140104</td>
+          <td></td>
+          <td class="text-start">INDEMNIZACION MUERTE</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>642</td>
+          <td>5</td>
+          <td>3747251</td>
+          <td class="text-start">ADRIANA JANET</td>
+          <td class="text-start">FALCONI</td>
+          <td class="text-start">BARBIERI</td>
+          <td></td>
+          <td>1</td>
+          <td>25776314</td>
+          <td class="text-start">INDEMNIZACION SEPELIO</td>
+          <td>XXX</td>
+          <td></td>
+          <td>1</td>
+          <td>5150</td>
+          <td>5150</td>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140104</td>
+          <td></td>
+          <td class="text-start">INDEMNIZACION SEPELIO</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>11/09/2024</td>
+          <td>12504</td>
+          <td>7005040183</td>
+          <td>642</td>
+          <td>4</td>
+          <td>3747254</td>
+          <td class="text-start">ADRIANA JANET</td>
+          <td class="text-start">FALCONI</td>
+          <td class="text-start">BARBIERI</td>
+          <td></td>
+          <td>1</td>
+          <td>25776314</td>
+          <td class="text-start">EMERGENCIA</td>
+          <td>T07.X</td>
+          <td></td>
+          <td>1</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>F</td>
+          <td>11/09/2024</td>
+          <td>11/09/2024</td>
+          <td>140104</td>
+          <td></td>
+          <td class="text-start">CENTENARIO PERUANO JAPONESA</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>11688</td>
+          <td>7004694193</td>
+          <td>227</td>
+          <td>4</td>
+          <td>3747247</td>
+          <td class="text-start">IDANIA JANET</td>
+          <td class="text-start">PALACIOS</td>
+          <td class="text-start">GOZAR</td>
+          <td></td>
+          <td>1</td>
+          <td>44208662</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S40.8</td>
+          <td></td>
+          <td>1</td>
+          <td>50</td>
+          <td>50</td>
+          <td>F</td>
+          <td>28/02/2024</td>
+          <td>11/03/2024</td>
+          <td>140809</td>
+          <td>15/09/1972</td>
+          <td class="text-start">CLINICA SAN GABRIEL</td>
+          <td>20505018509</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>11817</td>
+          <td>7004238698</td>
+          <td>306</td>
+          <td>4</td>
+          <td>3747261</td>
+          <td class="text-start">EDDY JANNETH</td>
+          <td class="text-start">ZAVALETA</td>
+          <td class="text-start">MUNDACA</td>
+          <td></td>
+          <td>1</td>
+          <td>18011563</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S06</td>
+          <td></td>
+          <td>1</td>
+          <td>150</td>
+          <td>150</td>
+          <td>F</td>
+          <td>10/04/2024</td>
+          <td>10/04/2024</td>
+          <td>120102</td>
+          <td>13/06/1996</td>
+          <td class="text-start">CLINICA FATIMA</td>
+          <td>20481829411</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12157</td>
+          <td>7005121795</td>
+          <td>451</td>
+          <td>4</td>
+          <td>3745829</td>
+          <td class="text-start">CELESTINO</td>
+          <td class="text-start">CONDORI</td>
+          <td class="text-start">MACHACA</td>
+          <td></td>
+          <td>1</td>
+          <td>01699292</td>
+          <td class="text-start">HOSPITALIZACION</td>
+          <td>S06.4</td>
+          <td></td>
+          <td>1</td>
+          <td>7623.4</td>
+          <td>7623.4</td>
+          <td>F</td>
+          <td>16/06/2024</td>
+          <td>16/06/2024</td>
+          <td>201301</td>
+          <td>07/05/1972</td>
+          <td class="text-start">CLINICA AMERICANA DE JULIACA</td>
+          <td>20321856145</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12300</td>
+          <td>7004746465</td>
+          <td>531</td>
+          <td>4</td>
+          <td>3747255</td>
+          <td class="text-start">GONZALO ENRIQUE</td>
+          <td class="text-start">PORTOCARRERO</td>
+          <td class="text-start">SALCEDO</td>
+          <td></td>
+          <td>1</td>
+          <td>47039654</td>
+          <td class="text-start">RAYOS X</td>
+          <td>S52.1</td>
+          <td></td>
+          <td>1</td>
+          <td>577.02</td>
+          <td>577.02</td>
+          <td>F</td>
+          <td>19/07/2024</td>
+          <td>19/07/2024</td>
+          <td>80612</td>
+          <td>22/02/1999</td>
+          <td class="text-start">ARTHRO MEDS</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12393</td>
+          <td>7005471201</td>
+          <td>579</td>
+          <td>4</td>
+          <td>3747258</td>
+          <td class="text-start">ROLANDO C</td>
+          <td class="text-start">ROMUALDO</td>
+          <td class="text-start">DIAZ</td>
+          <td></td>
+          <td>1</td>
+          <td>08238270</td>
+          <td class="text-start">TERAPIA FISICA</td>
+          <td>S13.4</td>
+          <td></td>
+          <td>1</td>
+          <td>160</td>
+          <td>160</td>
+          <td>F</td>
+          <td>10/08/2024</td>
+          <td>10/08/2024</td>
+          <td>140126</td>
+          <td>08/09/1982</td>
+          <td class="text-start">CLINICA JESUS DEL NORTE</td>
+          <td>20517738701</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12394</td>
+          <td>7005471201</td>
+          <td>579</td>
+          <td>4</td>
+          <td>3747259</td>
+          <td class="text-start">MARTINA</td>
+          <td class="text-start">ALVA</td>
+          <td class="text-start">ESCOBEDO</td>
+          <td></td>
+          <td>1</td>
+          <td>42406965</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S13.4</td>
+          <td></td>
+          <td>1</td>
+          <td>309</td>
+          <td>309</td>
+          <td>F</td>
+          <td>10/08/2024</td>
+          <td>10/08/2024</td>
+          <td>140126</td>
+          <td>08/09/1982</td>
+          <td class="text-start">CLINICA JESUS DEL NORTE</td>
+          <td>20517738701</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12398</td>
+          <td>7005471201</td>
+          <td>579</td>
+          <td>4</td>
+          <td>3747253</td>
+          <td class="text-start">ROCIO MERCEDES</td>
+          <td class="text-start">CARMONA</td>
+          <td class="text-start">SANDOVAL</td>
+          <td></td>
+          <td>1</td>
+          <td>40267259</td>
+          <td class="text-start">MATERIAL ORTOPEDICO</td>
+          <td>S92.7</td>
+          <td></td>
+          <td>1</td>
+          <td>200</td>
+          <td>200</td>
+          <td>F</td>
+          <td>10/08/2024</td>
+          <td>10/08/2024</td>
+          <td>140126</td>
+          <td>08/09/1982</td>
+          <td class="text-start">REEMBOLSO</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12415</td>
+          <td>7004586504</td>
+          <td>589</td>
+          <td>4</td>
+          <td>3747260</td>
+          <td class="text-start">SEGUNDINO</td>
+          <td class="text-start">ACEVEDO</td>
+          <td class="text-start">ASUNCION</td>
+          <td></td>
+          <td>1</td>
+          <td>45793766</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S49.9</td>
+          <td></td>
+          <td>1</td>
+          <td>150</td>
+          <td>150</td>
+          <td>F</td>
+          <td>14/08/2024</td>
+          <td>14/08/2024</td>
+          <td>120705</td>
+          <td>28/09/1994</td>
+          <td class="text-start">CLINICA FATIMA</td>
+          <td>20481829411</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12417</td>
+          <td>7005464273</td>
+          <td>590</td>
+          <td>4</td>
+          <td>3747262</td>
+          <td class="text-start">TERESA ELIZABETH</td>
+          <td class="text-start">REYNA</td>
+          <td class="text-start">SALAS VDA DE FLORENTINI</td>
+          <td></td>
+          <td>1</td>
+          <td>07395276</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S09.9</td>
+          <td></td>
+          <td>1</td>
+          <td>300</td>
+          <td>300</td>
+          <td>F</td>
+          <td>14/08/2024</td>
+          <td>14/08/2024</td>
+          <td>140101</td>
+          <td>09/05/1981</td>
+          <td class="text-start">CLINICA MAISON DE SANTE - LIMA</td>
+          <td>20101165389</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12453</td>
+          <td>7004717484</td>
+          <td>609</td>
+          <td>4</td>
+          <td>3747248</td>
+          <td class="text-start">AYDE</td>
+          <td class="text-start">PILLACA</td>
+          <td class="text-start">REMACHE</td>
+          <td></td>
+          <td>1</td>
+          <td>10097187</td>
+          <td class="text-start">HOSPITALIZACION</td>
+          <td>S22.4</td>
+          <td></td>
+          <td>1</td>
+          <td>6830</td>
+          <td>6830</td>
+          <td>F</td>
+          <td>24/08/2024</td>
+          <td>24/08/2024</td>
+          <td>50101</td>
+          <td></td>
+          <td class="text-start">CLINICA SANTA MARTHA DEL SUR</td>
+          <td>20517737560</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>11/09/2024</td>
+          <td>12492</td>
+          <td>7004706011</td>
+          <td>634</td>
+          <td>4</td>
+          <td>3747249</td>
+          <td class="text-start">JOSE LUIS</td>
+          <td class="text-start">TORRES</td>
+          <td class="text-start">BYRNE</td>
+          <td></td>
+          <td>1</td>
+          <td>41209481</td>
+          <td class="text-start">AMBULATORIO</td>
+          <td>S30.0</td>
+          <td></td>
+          <td>1</td>
+          <td>500</td>
+          <td>500</td>
+          <td>F</td>
+          <td>07/09/2024</td>
+          <td>07/09/2024</td>
+          <td>240104</td>
+          <td>15/01/1982</td>
+          <td class="text-start">CLINICA PROVIDENCIA</td>
+          <td>20477983708</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <nav class="mt-3">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    (function () {
+      var form = document.getElementById('tramasForm');
+      var tipoSelect = document.getElementById('tipoReporte');
+      var fechaDesdeInput = document.getElementById('fechaDesde');
+      var fechaHastaInput = document.getElementById('fechaHasta');
+      var descargarBtn = document.getElementById('btnDescargar');
+      var downloadStatus = document.getElementById('downloadStatus');
+      var tableFeedback = document.getElementById('tableFeedback');
+      var tableMap = {
+        APERTURA: { id: 'tramaApertura', dateColumnIndex: 0, label: 'APERTURA' },
+        RESERVA: { id: 'tramaReserva', dateColumnIndex: 1, label: 'RESERVA' },
+        LIQUIDACION: { id: 'tramaLiquidacion', dateColumnIndex: 1, label: 'LIQUIDACION' }
+      };
+      var hasSearched = false;
+
+      function parseDate(value) {
+        if (!value) {
+          return null;
+        }
+
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+          var partsIso = value.split('-');
+          return new Date(Number(partsIso[0]), Number(partsIso[1]) - 1, Number(partsIso[2]));
+        }
+
+        var parts = value.split('/');
+        if (parts.length !== 3) {
+          return null;
+        }
+
+        return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+      }
+
+      function formatTodayForFile() {
+        var now = new Date();
+        var month = String(now.getMonth() + 1).padStart(2, '0');
+        var day = String(now.getDate()).padStart(2, '0');
+        return now.getFullYear() + month + day;
+      }
+
+      function setStatus(message, isVisible) {
+        downloadStatus.textContent = message || '';
+        downloadStatus.classList.toggle('is-visible', Boolean(isVisible && message));
+      }
+
+      function resetRows(table) {
+        Array.prototype.forEach.call(table.tBodies[0].rows, function (row) {
+          row.style.display = '';
+        });
+      }
+
+      function hideAllTables() {
+        Object.keys(tableMap).forEach(function (key) {
+          var table = document.getElementById(tableMap[key].id);
+          if (!table) {
+            return;
+          }
+
+          resetRows(table);
+          var wrap = table.closest('[data-table-wrap]');
+          if (wrap) {
+            wrap.classList.add('trama-hidden');
+          }
+        });
+      }
+
+      function getSelectedTableConfig() {
+        return tableMap[tipoSelect.value] || null;
+      }
+
+      function showSelectedTable() {
+        hideAllTables();
+        var config = getSelectedTableConfig();
+
+        if (!config) {
+          tableFeedback.textContent = '';
+          return null;
+        }
+
+        var table = document.getElementById(config.id);
+        var wrap = table ? table.closest('[data-table-wrap]') : null;
+        if (wrap) {
+          wrap.classList.remove('trama-hidden');
+        }
+
+        return table;
+      }
+
+      function filterTableRows() {
+        var config = getSelectedTableConfig();
+        if (!config) {
+          tableFeedback.textContent = 'Selecciona un tipo de reporte para continuar.';
+          descargarBtn.disabled = true;
+          hasSearched = false;
+          hideAllTables();
+          return;
+        }
+
+        var table = showSelectedTable();
+        if (!table) {
+          tableFeedback.textContent = 'No se encontró la tabla del reporte seleccionado.';
+          descargarBtn.disabled = true;
+          hasSearched = false;
+          return;
+        }
+
+        var fromDate = parseDate(fechaDesdeInput.value);
+        var toDate = parseDate(fechaHastaInput.value);
+
+        if (fromDate && toDate && fromDate > toDate) {
+          tableFeedback.textContent = 'La fecha desde no puede ser mayor que la fecha hasta.';
+          descargarBtn.disabled = true;
+          hasSearched = false;
+          resetRows(table);
+          return;
+        }
+
+        var visibleRows = 0;
+        Array.prototype.forEach.call(table.tBodies[0].rows, function (row) {
+          var cell = row.cells[config.dateColumnIndex];
+          var rowDate = cell ? parseDate(cell.textContent.trim()) : null;
+          var isVisible = true;
+
+          if (fromDate && rowDate && rowDate < fromDate) {
+            isVisible = false;
+          }
+
+          if (toDate && rowDate && rowDate > toDate) {
+            isVisible = false;
+          }
+
+          row.style.display = isVisible ? '' : 'none';
+          if (isVisible) {
+            visibleRows += 1;
+          }
+        });
+
+        hasSearched = true;
+        descargarBtn.disabled = visibleRows === 0;
+        tableFeedback.textContent = visibleRows > 0
+          ? 'Se encontraron ' + visibleRows + ' registros para ' + config.label + '.'
+          : 'No se encontraron registros para el rango indicado.';
+        setStatus('', false);
+      }
+
+      function buildExportTable(table) {
+        var clone = table.cloneNode(true);
+        Array.prototype.forEach.call(clone.querySelectorAll('tbody tr'), function (row) {
+          if (row.style.display === 'none') {
+            row.remove();
+          }
+        });
+        return clone.outerHTML;
+      }
+
+      function downloadTableAsExcel() {
+        var config = getSelectedTableConfig();
+        if (!config || !hasSearched) {
+          setStatus('Primero realiza la búsqueda por tipo.', true);
+          descargarBtn.disabled = true;
+          return;
+        }
+
+        var table = document.getElementById(config.id);
+        if (!table) {
+          setStatus('No se encontró la tabla para exportar.', true);
+          return;
+        }
+
+        var hasVisibleRows = Array.prototype.some.call(table.tBodies[0].rows, function (row) {
+          return row.style.display !== 'none';
+        });
+
+        if (!hasVisibleRows) {
+          setStatus('No hay datos visibles para descargar.', true);
+          descargarBtn.disabled = true;
+          return;
+        }
+
+        var originalLabel = descargarBtn.textContent;
+        descargarBtn.disabled = true;
+        descargarBtn.innerHTML = '<span class="download-spinner"></span>DESCARGANDO';
+        setStatus('Preparando archivo Excel...', true);
+
+        window.setTimeout(function () {
+          var html = '' +
+            '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+            '<head><meta charset="UTF-8"></head><body>' + buildExportTable(table) + '</body></html>';
+          var blob = new Blob([html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+          var link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = config.label.toLowerCase() + '_' + formatTodayForFile() + '.xls';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(link.href);
+
+          descargarBtn.innerHTML = originalLabel;
+          descargarBtn.disabled = false;
+          setStatus('Archivo listo. La descarga comenzó correctamente.', true);
+          window.setTimeout(function () {
+            alert('La descarga del reporte ' + config.label + ' está lista.');
+          }, 100);
+        }, 900);
+      }
+
+      tipoSelect.addEventListener('change', function () {
+        showSelectedTable();
+        descargarBtn.disabled = true;
+        hasSearched = false;
+        setStatus('', false);
+        tableFeedback.textContent = tipoSelect.value
+          ? 'Presiona BUSCAR para filtrar el reporte ' + tipoSelect.value + ' por rango de fechas.'
+          : '';
+      });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        filterTableRows();
+      });
+
+      descargarBtn.addEventListener('click', function () {
+        downloadTableAsExcel();
+      });
+
+      hideAllTables();
+      descargarBtn.disabled = true;
+    }());
+  </script>
+
+
+
+
+
+

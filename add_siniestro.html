@@ -1,0 +1,1923 @@
+         
+<div class="container ">
+    <div class="row">
+        <div class="col-9">
+            <h4>Registro de Siniestro</h4>
+        </div>
+        <div class="col-3" align="right">
+             <button id="listarSiniestroLink" class="btn btn-primary btn-sm" data-target="listar_siniestros.html"> <span>Listar Siniestro</span>
+</button>
+        </div>
+    </div>
+        <form autocomplete="off">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-siniestro-tab" data-bs-toggle="tab" href="#nav-siniestro" role="tab" aria-controls="nav-siniestro" aria-selected="true">Siniestro</a>
+                    <a class="nav-item nav-link" id="nav-accidentados-tab" data-bs-toggle="tab" href="#nav-accidentados" role="tab" aria-controls="nav-accidentados" aria-selected="false">Accidentados</a>
+                    <a class="nav-item nav-link" id="nav-documentosR-tab" data-bs-toggle="tab" href="#nav-documentosR" role="tab" aria-controls="nav-documentosR" aria-selected="false">Documentos Relacionados</a>
+                </div>
+            </nav>
+            <div class="tab-content mt-3" id="nav-tabContent">
+              
+<!-- ***********Tab Documentos Relacionados********** -->
+<div class="tab-pane fade" id="nav-documentosR" role="tabpanel" aria-labelledby="nav-documentosR-tab">
+                    
+                            <div class="row">
+                                
+                                  
+
+                                          <div class="col-md-5 ">
+                                            <input type="search" class="form-control w-75 form-control-sm" placeholder="🔍 TIPO,NOMBRE">
+                                          </div>
+                                          <div class="col-md-5"></div>
+                                          <div class="col-md-2" align="right">
+                                            
+                                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalSubirDoc">
+                                              NUEVO DOCUMENTO
+                                            </button>
+                                          </div>
+                                          <div class="col-12 my-3">
+                                                  <!-- Tabla de Accidentados -->
+                                                  <div class="table-responsive mb-3">
+                                                    <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+                                                      <thead class="table-light">
+                                                        <tr>
+                                                          <th class="text-center">NRO</th>
+                                                          <th class="text-center">TIPO</th>
+                                                          <th class="text-center">NOMBRE</th>
+                                                          <th class="text-center">ARCHIVO</th>
+                                                          <th class="text-center">OPC</th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <tr>
+                                                          <td class="text-center">001</td>
+                                                          <td class="text-center">DENUENCIA POLICIAL</td>
+                                                          <td class="text-center">DEN_POL</td>
+                                                          <td class="text-center">DEN_POL.PDF</td>
+                                                          <td class="text-center"><div class="dropdown">
+                                                            <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                              <i class="fas fa-bars"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                              <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-1"></i> Editar</a></li>
+                                                              <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt me-1"></i> Eliminar</a></li>
+                                                            </ul>
+                                                          </div>
+                                                          </td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td class="text-center">002</td>
+                                                          <td class="text-center">EXPEDIENTE</td>
+                                                          <td class="text-center">HISTORIA CLINICA</td>
+                                                          <td class="text-center">HIS_CLIN.PDF</td>
+                                                          <td class="text-center"><div class="dropdown">
+                                                            <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                              <i class="fas fa-bars"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                              <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-1"></i> Editar</a></li>
+                                                              <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt me-1"></i> Eliminar</a></li>
+                                                            </ul>
+                                                          </div>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+
+                                                  <!-- Paginación -->
+                                                  <nav aria-label="Page navigation example" class="mb-4">
+                                                    <ul class="pagination pagination-sm justify-content-center">
+                                                      <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                      <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                      <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                    </ul>
+                                                  </nav>
+                            </div>
+                </div>
+</div>
+
+<!---MODAL SUBIR DOCUMENTOS-->
+          <div class="modal fade" id="modalSubirDoc" tabindex="-1" aria-labelledby="modalSubirDocLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Nueva Documento</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="img/subir_doc.JPG" alt="" class="img-fluid" style="width: 100%;">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-success">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+<!-- ***********Tab Registro Siniestro*********** -->
+<div class="tab-pane fade show active nav_tab" id="nav-siniestro" role="tabpanel" aria-labelledby="nav-siniestro-tab">
+                    <fieldset class="border p-3 mb-3">
+                        <legend class="w-auto px-2"><b>Datos del Vehículo</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="placa">PLACA (*)</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="placa" value="52451285" >
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="certificado">CERTIFICADO (*)</label>
+                                <input type="text" class="form-control" id="certificado" value="52451285" >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="fecha_inicio_vigencia">FECHA INICIO VIGENCIA (*)</label>
+                                <input type="date" class="form-control" id="fecha_inicio_vigencia" >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="fecha_fin_vigencia">FECHA FIN VIGENCIA (*)</label>
+                                <input type="date" class="form-control" id="fecha_fin_vigencia" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="clase_vehiculo">CLASE VEHICULO (*)</label>
+                                <select class="form-control" id="clase_vehiculo" >
+                                    <option>AUTOMOVIL</option>
+                                    <option>CAMIONETA</option>
+                                    <option>OMNIBUS</option>
+                                    <option>CAMION</option>
+                                    <option>VEHICULO MENOR</option>
+                                    <option>MICROBUS</option>
+                                    <option>MAQUINA PESADA</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="uso_vehiculo">USO VEHICULO (*)</label>
+                                <select class="form-control" id="uso_vehiculo" >
+                                    <option>PARTICULAR</option>
+                                    <option>PUBLICO</option>
+                                    <option>EMPRESARIAL</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="https://www.dimequetienesseguro.com/consulta-soat/" target="_blank"><button type="button" class="btn btn-primary mt-4">APESEG</button></a>
+                            </div>
+                        </div>
+                        
+                    </fieldset>
+
+                    <fieldset class="border p-3 mb-3">
+                        <legend class="w-auto px-2"><b>Datos del Siniestro</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="fecha_ocurrencia">FECHA OCURRENCIA (*)</label>
+                                <input type="date" class="form-control" id="fecha_ocurrencia" >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="hora_ocurrencia">HORA OCURRENCIA (*)</label>
+                                <input type="time" class="form-control" id="hora_ocurrencia" value="00:00" >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="tipo_siniestro">TIPO DE SINIESTRO (*)</label>
+                                <select class="form-control" id="tipo_siniestro" >
+                                    <option>CHOQUE</option>
+                                            <option>ATROPELLO</option>
+                                            <option>CAIDA</option>
+                                            <option>VOLCADURA</option>
+                                            <option>DESPISTE</option>
+                                            <option>INCENDIO</option>
+                                            <option>NO ESPECIFICADO</option>
+                                            <option>OTROS</option>
+                                            <option>LESIONES RELACIONADAS CON CIRCULACION</option>
+                                            <option>ACCIDENTE ESPECIAL</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="estado">ESTADO (*)</label>
+                                <select class="form-control" id="estado" >
+                                    <option>EN INVESTIGACION</option>
+                                    <option>ACEPTADO</option>
+                                    <option>RECHAZADO</option>
+                                    <option>RECUPERO</option>
+                                    <option>EN INVESTIGACION</option>
+                                    <option>ANULADO</option>
+                                    <option>CERRADO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="lugar_siniestro">LUGAR DEL SINIESTRO</label>
+                                <input type="text" class="form-control" id="lugar_siniestro">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="comisaria">COMISARIA (*)</label>
+                                <div class="input-group">
+                                    <select class="form-control" id="comisaria" >
+                                        <option>Comisaria de Miraflores</option>
+                                        <option>Comisaria de San Isidro</option>
+                                        <option>Comisaria de Surco</option>
+                                        <option>Comisaria de La Molina</option>
+                                        <option>Comisaria de San Borja</option>
+                                        <option>Comisaria de Lince</option>
+                                    </select>
+                                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#modalComisarias">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                              <label for="nombre_contacto">NOMBRE CONTACTO</label>
+                              <input type="text" class="form-control" id="nombre_contacto">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="departamento">DEPARTAMENTO (*)</label>
+                                <select class="form-control" id="departamento" >
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="provincia">PROVINCIA (*)</label>
+                                <select class="form-control" id="provincia" >
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="distrito">DISTRITO (*)</label>
+                                <select class="form-control" id="distrito" >
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                              <label for="telefono_contacto">TELEFONO CONTACTO</label>
+                              <input type="tel" class="form-control" id="telefono_contacto">
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="descripcion_siniestro">DESCRIPCION DEL SINIESTRO (*)</label>
+                                <textarea class="form-control" id="descripcion_siniestro" rows="3" ></textarea>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="observaciones">OBSERVACIONES</label>
+                            <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                        </div>
+                        </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="border p-3 mb-3">
+                        <legend class="w-auto px-2"><b>Datos del Conductor</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="tipo_documento">TIPO DOCUMENTO (*)</label>
+                                <select class="form-control" id="tipo_documento" >
+                                    <option selected="selected">SIN DOCUMENTO</option>
+                                    <option>DNI</option>
+                                    <option>RUC</option>
+                                    <option>CARNET IDENTIDAD</option>
+                                    <option>CARNET EXTRANJERIA</option>
+                                    <option>LIBRETA MILITAR</option>
+                                    <option>PASAPORTE</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="numero_documento">NUMERO (*)</label>
+                                <input type="text" class="form-control" id="numero_documento" value="52451285" >
+                            </div>
+                            <div class="col-md-2">
+                                <label for="sexo">SEXO (*)</label>
+                                <select class="form-control" id="sexo" >
+                                    <option>MASCULINO</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="fecha_nacimiento">FECHA NACIMIENTO</label>
+                                <input type="date" class="form-control" id="fecha_nacimiento">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="edad">EDAD</label>
+                                <input type="number" class="form-control" id="edad">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="apellido_paterno">APELLIDO PATERNO (*)</label>
+                                <input type="text" class="form-control" id="apellido_paterno" value="LOPEZ" >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="apellido_materno">APELLIDO MATERNO (*)</label>
+                                <input type="text" class="form-control" id="apellido_materno" value="PEREZ" >
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombres">NOMBRES (*)</label>
+                                <input type="text" class="form-control" id="nombres" value="AURELIO" >
+                            </div>
+                            
+                        </div>
+                     
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <input type="checkbox" class="form-check-input" id="conductor_accidentado" checked>
+                                <label class="form-check-label" for="conductor_accidentado">CONDUCTOR ES ACCIDENTADO</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" class="form-check-input" id="conductor_nn">
+                                <label class="form-check-label" for="conductor_nn">CONDUCTOR NN</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" class="form-check-input" id="conductor_fallecido">
+                                <label class="form-check-label" for="conductor_fallecido">CONDUCTOR FALLECIDO</label>
+                            </div>
+                        </div>
+                        <div class="mt-3" align="right">
+                            <button type="button" class="btn btn-danger">CERRAR</button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCartaEmergencia"  >GUARDAR</button>
+                        </div>
+                    </fieldset>
+                </div>
+        <!-- MODAL LISTADO DE COMISARIAS -->
+        <div class="modal fade" id="modalComisarias" tabindex="-1" aria-labelledby="modalComisariasLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-header bg-light">
+                <h5 class="modal-title" id="modalComisariasLabel">LISTADO DE COMISARÍAS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                <div class="table-responsive">
+                  <div class="input-group">
+                    <input type="text" class="form-control mb-3" id="buscarComisaria" placeholder="🔍 Buscar Comisaría">
+                    <button name="registrar_comisaria" id="registrar_comisaria" class="btn btn-success mb-3" type="button">
+                      <i class="bi bi-plus"></i></button>
+                  </div>
+
+                  <!-- Formulario oculto para registrar comisaría -->
+                  <div id="formularioComisaria" class="card mb-3" style="display: none;">
+                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                      <h6 class="mb-0" id="tituloFormularioComisaria">REGISTRAR NUEVA COMISARÍA</h6>
+                      <button type="button" class="btn-close" id="cerrarFormulario" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label for="nombreComisaria" class="form-label">Nombre de la Comisaría(*)</label>
+                        <input type="text" class="form-control" id="nombreComisaria" placeholder="Ingrese el nombre de la comisaría">
+                      </div>
+                      <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-success" id="guardarComisaria">GUARDAR</button>
+                        <button type="button" class="btn btn-secondary" id="cancelarComisaria">CANCELAR</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <table class="table table-bordered table-hover align-middle" style="font-size: 12px">
+                    <thead class="table-light">
+                      <tr>
+                        <th>COMISARÍA</th>
+                        <th>EDITAR</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tablaComisariasBody">
+                      <tr>
+                        <td>Comisaria de Miraflores</td>
+                        <td class="text-center">
+                          <button type="button" class="btn btn-sm btn-warning" ><i class="bi bi-pencil"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Comisaria de San Isidro</td>
+                        <td class="text-center">
+                          <button type="button" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Comisaria de Surco</td>
+                        <td class="text-center">
+                          <button type="button" class="btn btn-sm btn-warning" > <i class="bi bi-pencil"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Comisaria de La Molina</td>
+                        <td class="text-center">
+                          <button type="button" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Comisaria de San Borja</td>
+                        <td class="text-center">
+                          <button type="button" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Comisaria de Lince</td>
+                        <td class="text-center">
+                          <button type="button" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="small text-muted" id="resultadoBusquedaComisaria"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL NUEVA CARTA DE EMERGENCIA -->
+        <div class="modal fade" id="modalCartaEmergencia" tabindex="-1" aria-labelledby="modalCartaEmergenciaLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-light">
+                <h5 class="modal-title">REGISTRAR CARTA DE EMERGENCIA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+
+                <form>
+                  <fieldset class="border p-3">
+                    <legend class="float-none w-auto px-2 fs-6 text-muted">Datos</legend>
+                    <div class="row g-2">
+                      <div class="col-md-4">
+                        <label class="form-label">COBERTURA(*)</label>
+                        <select class="form-select" disabled>
+                          <option selected>GASTOS MEDICOS</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">CENTRO MEDICO(*)</label>
+                        <select class="form-select">
+                          <option selected>CLINICA INTERNACIONAL SAN BORJA LIMA</option>
+                          <option >CLINICA INTERNACIONAL SAN JUAN</option>
+                          <option >CLINICA INTERNACIONAL METROPOLITANA</option>
+                        </select>
+                      </div>
+                      <div class="col-md-2 d-flex align-items-end">
+                        <button type="button" class="btn btn-success btn-sm"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">DIAGNOSTICO(*)</label>
+                        <select class="form-select">
+                          <option selected>(T07) TRAUMATISMO MULTIPLES</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">ESPECIALIDAD(*)</label>
+                        <select class="form-select">
+                          <option selected>-</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">TIPO ATENCION</label>
+                        <select class="form-select" disabled>
+                          <option selected>EMERGENCIA</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="form-label d-block invisible">Correos</label>
+                        <label class="form-label d-block">ENVIAR CORREO <input class="form-check-input" type="checkbox" id="enviarCorreo"></label>
+                      </div>
+                    
+                      
+                      <div class="col-md-5">
+                        <div id="correo_1" class="email-container w-100" onclick="focusInput('correo_1')">
+                          <input class="email-input" type="text" placeholder="Agregar correo...">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">MONTO CARTA(*)</label>
+                        <input type="text" class="form-control" id="monto_carta" value="1000.00" disabled>
+                      </div>
+                      <div class="col-md-8">
+                        <label class="form-label">OBSERVACIONES</label>
+                        <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+                <button type="submit" class="btn btn-success">GUARDAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- ***********Tab Accidentados*********** -->
+  <div class="tab-pane fade" id="nav-accidentados" role="tabpanel" aria-labelledby="nav-accidentados-tab">
+                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <input type="text" class="form-control w-25 form-control-sm" placeholder="🔍 DNI,ACCIDENTADO">
+                        <!-- Botón que abre el modal -->
+                         
+                          <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalAccidentado">
+                            Nuevo Accidentado
+                          </button>
+                      </div>
+
+                      <!-- Tabla de Accidentados -->
+                      <div class="table-responsive mb-3">
+                        <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+                          <thead class="table-light">
+                            <tr>
+                              <th>DETALLE</th>
+                              <th>NRO SINIESTRO</th>
+                              <th>TIPO DCTO</th>
+                              <th>NUMERO</th>
+                              <th>ACCIDENTADO</th>
+                              <th>TIPO</th>
+                              <th>FALLECIDO</th>
+                              <th>OPC</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-center">
+                                <div class="checkbox">
+                                      <label style="font-size: 1.5em">
+                                          <input type="checkbox" value="" id="accidentado1" class="single-check">
+                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                      </label>
+                                  </div>
+                              </td>
+                              <td class="text-center">00005</td>
+                              <td class="text-center">DNI</td>
+                              <td class="text-center">45124578</td>
+                              <td>5011 ARRASCO OBLITAS MIGUEL</td>
+                              <td>OCUPANTE</td>
+                              <td>NO</td>
+                              <td class="text-center">
+                                <div class="dropdown">
+                                  <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-bars"></i>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-1"></i> Editar</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt me-1"></i> Eliminar</a></li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <div class="checkbox">
+                                      <label style="font-size: 1.5em">
+                                          <input type="checkbox" value="" id="accidentado2" class="single-check">
+                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                      </label>
+                                  </div>
+                              </td>
+                              <td class="text-center">00006</td>
+                              <td class="text-center">DNI</td>
+                              <td class="text-center">87414578</td>
+                              <td>5111 TUESTA BARRIOS NOE</td>
+                              <td>OCUPANTE</td>
+                              <td>NO</td>
+                              <td class="text-center">
+                                <div class="dropdown">
+                                  <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-bars"></i>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-1"></i> Editar</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt me-1"></i> Eliminar</a></li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <div class="checkbox">
+                                      <label style="font-size: 1.5em">
+                                          <input type="checkbox" value="" id="accidentado3" class="single-check" checked>
+                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                      </label>
+                                  </div>
+                              </td>
+                              <td class="text-center">00007</td>
+                              <td class="text-center">DNI</td>
+                              <td class="text-center">70992994</td>
+                              <td>PONTE FUENTES JHAIR</td>
+                              <td>OCUPANTE</td>
+                              <td>SI</td>
+                              <td class="text-center">
+                                <div class="dropdown">
+                                  <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-bars"></i>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-1"></i> Editar</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt me-1"></i> Eliminar</a></li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <!-- Paginación -->
+                      <nav aria-label="Page navigation example" class="mb-4">
+                        <ul class="pagination pagination-sm justify-content-center">
+                          <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">4</a></li>
+                          <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                      </nav>
+
+<!-- LISTA SOLICITUDES -->
+                       <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold">PETICIONES</h6>
+                        <!-- Botón que abre el modal -->
+                          <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#nuevaSolicitudModal">
+                            Nueva Peticion
+                          </button>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+                          <thead class="table-light text-center">
+                            <tr valign="top">
+                              <th>VER</th>
+                              <th>COBERTURA</th>
+                              <th>MONEDA</th>
+                              <th>MONTO CARTAS/SOLICITADO</th>
+                              <th>MONTO CUBIERTO</th>
+                              <th>MONTO RESERVA</th>
+                              <th>MONTO LIQUIDACIÓN</th>
+                              <th>MONTO OBSERVADO</th>
+                              <th>MONTO NO CUBIERTO</th>
+                              <th>SALDO COBERTURA</th>
+                              <th>SALDO RESERVA</th>
+                              <th>LÍMITE DE COBERTURA</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-center">
+                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetalleGastos"><i class="bi bi-file-text"></i></button>
+                              </td>
+                              <td>GASTOS MÉDICOS</td>
+                              <td>SOLES</td>
+                              <td align="center">2050.00</td>
+                              <td align="center">1400.00</td>
+                              <td align="center">1400.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">25350.00</td>
+                              <td align="center">25350.00</td>
+                              <td align="center">26750.00</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetalleIncapacidad"><i class="bi bi-file-text"></i></button>
+                              </td>
+                              <td>INCAPACIDAD TEMPORAL</td>
+                              <td>SOLES</td>
+                              <td align="center">3000.00</td>
+                              <td align="center">1450.00</td>
+                              <td align="center">1450.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">25300.00</td>
+                              <td align="center">25300.00</td>
+                              <td align="center">26750.00</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetalleInvalidez"><i class="bi bi-file-text"></i></button>
+                              </td>
+                              <td>INVALIDEZ PERMANENTE</td>
+                              <td>SOLES</td>
+                              <td align="center">1000.00</td>
+                              <td align="center">1000.00</td>
+                              <td align="center">1000.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">25750.00</td>
+                              <td align="center">25750.00</td>
+                              <td align="center">26750.00</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetalleMuerte"><i class="bi bi-file-text"></i></button>
+                              </td>
+                              <td>MUERTE</td>
+                              <td>SOLES</td>
+                              <td align="center">21400.00</td>
+                              <td align="center">21400.00</td>
+                              <td align="center">21400.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">21400.00</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetalleSepelio"><i class="bi bi-file-text"></i></button>
+                              </td>
+                              <td>SEPELIO</td>
+                              <td>SOLES</td>
+                              <td align="center">1000.00</td>
+                              <td align="center">1000.00</td>
+                              <td align="center">1000.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">0.00</td>
+                              <td align="center">4350.00</td>
+                              <td align="center">4350.00</td>
+                              <td align="center">5350.00</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+</div>
+
+
+<!-- MODAL NUEVO ACCIDENTADO -->
+<div class="modal fade" id="modalAccidentado" tabindex="-1" aria-labelledby="modalAccidentadoLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header bg-light">
+                          <h5 class="modal-title" id="modalAccidentadoLabel">REGISTRAR ACCIDENTADO</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+
+                          <form>
+                            <fieldset class="border p-3">
+                              <legend class="float-none w-auto px-2 fs-6 text-muted">Datos</legend>
+                              <div class="row g-2">
+                                <div class="col-md-3">
+                                  <label class="form-label">TIPO DOCUMENTO(*)</label>
+                                  <select class="form-select">
+                                    <option>Tipo Documento</option>
+                                    <option>DNI</option>
+                                    <option>CE</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-3">
+                                  <label class="form-label">NUMERO(*)</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" value="45124578">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                      <i class="bi bi-person-fill"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <label class="form-label">SEXO(*)</label>
+                                  <select class="form-select">
+                                    <option>MASCULINO</option>
+                                    <option>FEMENINO</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-3">
+                                  <label class="form-label">TIPO(*)</label>
+                                  <select class="form-select">
+                                    <option>OCUPANTE</option>
+                                    <option>PEATON</option>
+                                    <option>CONDUCTOR</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-3">
+                                  <label class="form-label">APELLIDO PATERNO(*)</label>
+                                  <input type="text" class="form-control" value="LOPEZ">
+                                </div>
+                                <div class="col-md-3">
+                                  <label class="form-label">APELLIDO MATERNO(*)</label>
+                                  <input type="text" class="form-control" value="PEREZ">
+                                </div>
+                                <div class="col-md-6">
+                                  <label class="form-label">NOMBRES(*)</label>
+                                  <input type="text" class="form-control" value="AURELIO">
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="checkbox">
+                                      <label style="font-size: 1.5em">
+                                          <input type="checkbox" value="" id="accidentadoNN">
+                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>ACCIDENTADO NN
+                                      </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="checkbox">
+                                      <label style="font-size: 1.5em">
+                                          <input type="checkbox" value="" id="fallecidoNN">
+                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>FALLECIDO NN
+                                      </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6" align="right">
+                                  <div class="checkbox">
+                                      <label style="font-size: 1.5em">
+                                          <input type="checkbox" value="" id="conductorNN">
+                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>GENERAR CG EMERGENCIA
+                                      </label>
+                                </div>
+                              </div>
+                            </fieldset>
+                          </form>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCartaEmergencia2">GUARDAR</button>
+                          
+                        </div>
+                      </div>
+                    </div>
+</div>
+
+<!-- MODAL NUEVA CARTA DE EMERGENCIA DESDE ACCIDENTADO -->
+<div class="modal fade" id="modalCartaEmergencia2" tabindex="-1" aria-labelledby="modalCartaEmergenciaLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title">REGISTRAR CARTA DE EMERGENCIA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <fieldset class="border p-3">
+            <legend class="float-none w-auto px-2 fs-6 text-muted">Datos</legend>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <label class="form-label">COBERTURA(*)</label>
+                <select class="form-select" disabled>
+                  <option selected>GASTOS MEDICOS</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">CENTRO MEDICO(*)ddd</label>
+                <select class="form-select">
+                  <option >CLINICA INTERNACIONAL SAN BORJA LIMA</option>
+                  <option selected>CLINICA INTERNACIONAL SAN JUAN</option>
+                  <option >CLINICA INTERNACIONAL METROPOLITANA</option>
+                </select>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <a href="https://www.solben.net/login" target="_blank" class="btn btn-success btn-sm"><i class="bi bi-plus"></i></a>
+                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-arrow-clockwise"></i>
+                </button>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">DIAGNOSTICO(*)</label>
+                <select class="form-select">
+                  <option selected>(T07) TRAUMATISMO MULTIPLES</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">ESPECIALIDAD(*)</label>
+                <select class="form-select">
+                  <option selected>-</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">TIPO ATENCION</label>
+                <select class="form-select" disabled>
+                  <option selected>EMERGENCIA</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label me-3 invisible">ENVIAR CORREO</label>
+                <label class="form-label me-3">ENVIAR CORREO  <input class="form-check-input" type="checkbox" id="accidentadoNN"></label>
+              </div>
+
+              <div class="col-md-5 d-flex align-items-end">
+                <div id="correo_2" class="email-container w-100" onclick="focusInput('correo_2')">
+                  <input class="email-input" type="text" placeholder="Agregar correo...">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">MONTO CARTA(*)</label>
+                <input type="text" class="form-control" id="monto_carta" value="1000.00" disabled>
+              </div>
+              <div class="col-md-8">
+                <label class="form-label">OBSERVACIONES</label>
+                <textarea class="form-control" id="observaciones" rows="3"></textarea>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+        <button type="submit" class="btn btn-success">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL NUEVA SOLICITUD-->
+<div class="modal fade" id="nuevaSolicitudModal" tabindex="-1" aria-labelledby="nuevaSolicitudLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="nuevaSolicitudLabel">NUEVA PETICION</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="solicitudForm">
+          <!-- Tabs Navigation -->
+          <ul class="nav nav-tabs mb-4" id="solicitudTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="datos-tab" data-bs-toggle="tab" data-bs-target="#datos" type="button" role="tab" aria-controls="datos" aria-selected="true">1. Datos del Accidentado</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="solicitante-tab" data-bs-toggle="tab" data-bs-target="#solicitante" type="button" role="tab" aria-controls="solicitante" aria-selected="false">2. Solicitante y Beneficiario</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="documentos-tab" data-bs-toggle="tab" data-bs-target="#documentos" type="button" role="tab" aria-controls="documentos" aria-selected="false">3. Documentos Requeridos</button>
+            </li>
+          </ul>
+
+          <!-- Tabs Content -->
+          <div class="tab-content" id="solicitudTabContent">
+            <!-- Tab 1: Datos del Accidentado -->
+            <div class="tab-pane fade show active" id="datos" role="tabpanel" aria-labelledby="datos-tab">
+
+
+
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <label class="form-label fw-bold">Tipo Peticion (*)</label>
+                  <select class="form-select" id="tipoSolicitud">
+                    <option value="">Seleccionar...</option>
+                    <option value="indemnizacion">Indemnización</option>
+                    <option value="reembolso">Reembolso</option>
+                  </select>
+                </div>
+
+                <!-- ESTE DIV SE MANTIENE (clave para tu JS) -->
+                <div class="col-md-4" id="camposIndemnizacion" style="display:none;">
+                  <label class="form-label fw-bold">Tipo Indemnización (*)</label>
+                  <select class="form-select" id="tipoIndemnizacion">
+                    <option value="">Seleccionar...</option>
+                    <option value="incapacidad_temporal">Incapacidad Temporal</option>
+                    <option value="invalidez_permanente">Invalidez Permanente</option>
+                    <option value="muerte">Muerte</option>
+                  </select>
+                </div>
+
+                  <div class="col-md-4" id="camposReembolso" style="display: none;">
+                    <label for="tipoReembolso" class="form-label fw-bold">Tipo Reembolso (*)</label>
+                    <select class="form-select" id="tipoReembolso">
+                      <option value="">Seleccionar...</option>
+                      <option value="gastos_medicos">Gastos Médicos</option>
+                      <option value="sepelio">Sepelio</option>
+                    </select>
+                  </div>
+
+
+
+              </div>
+
+                <!-- Campos para Incapacidad Temporal -->
+                <div id="camposIncapacidad" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="tipoDoc1" class="form-label">TIPO DOCUMENTO (*)</label>
+                      <select class="form-select" id="tipoDoc1" disabled>
+                        <option>Seleccionar...</option>
+                        <option value="DNI" selected>DNI</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="numeroDo1" class="form-label">NUMERO (*)</label>
+                      <input type="number" class="form-control" id="numeroDoc1" value="70992994" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="nombreAccidentado1" class="form-label">NOMBRE (*)</label>
+                      <input type="text" class="form-control" id="nombreAccidentado1" value="PONTE FUENTES JHAIR" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="celularAccidentado1" class="form-label">CELULAR (*)</label>
+                      <input type="number" class="form-control" id="celularAccidentado1">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="correoAccidentado1" class="form-label">CORREO (*)</label>
+                      <input type="email" class="form-control" id="correoAccidentado1">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="direccionAccidentado1" class="form-label">DIRECCION (*)</label>
+                      <input type="text" class="form-control" id="direccionAccidentado1">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="fechaInicioIT1" class="form-label">FECHA INICIO (*)</label>
+                      <input type="date" class="form-control" id="fechaInicioIT1" required onchange="calcularDiasIncapacidad()">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="fechaFinIT1" class="form-label">FECHA FIN (*)</label>
+                      <input type="date" class="form-control" id="fechaFinIT1" required onchange="calcularDiasIncapacidad()">
+                    </div>
+                    <div class="col-md-2">
+                      <label for="numeroDias" class="form-label">NUMERO DE DIAS (*)</label>
+                      <input type="number" class="form-control text-center" id="numeroDias" disabled>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="montoSolicitado1" class="form-label">MONTO SOLICITADO (*)</label>
+                      <input type="number" class="form-control text-center" id="montoSolicitado1" step="0.01" min="0" disabled>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="fechaRecepcion1" class="form-label">FECHA RECEPCION (*)</label>
+                      <input type="date" class="form-control" id="fechaRecepcion1">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 alert alert-danger">
+                      <label class="form-label">SOLCITUDES OBSERVADAS</label>
+                      <table class="table table-bordered ">
+                        <tr>
+                          <td>Numero</td>
+                          <td>Cobertura</td>
+                          <td>Monto</td>
+                          <td>Estado</td>
+                          <td>Referencia</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos para Invalidez Permanente -->
+                <div id="camposInvalidez" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="tipoDoc2" class="form-label">TIPO DOCUMENTO (*)</label>
+                      <select class="form-select" id="tipoDoc2" disabled>
+                        <option>Seleccionar...</option>
+                        <option value="DNI" selected>DNI</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="numeroDoc2" class="form-label">NUMERO (*)</label>
+                      <input type="number" class="form-control" id="numeroDoc2" value="70992994" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="nombreAccidentado2" class="form-label">NOMBRE (*)</label>
+                      <input type="text" class="form-control" id="nombreAccidentado2" value="PONTE FUENTES JHAIR" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="celularAccidentado2" class="form-label">CELULAR (*)</label>
+                      <input type="number" class="form-control" id="celularAccidentado2">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="correoAccidentado2" class="form-label">CORREO (*)</label>
+                      <input type="email" class="form-control" id="correoAccidentado2">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="direccionAccidentado2" class="form-label">DIRECCION (*)</label>
+                      <input type="text" class="form-control" id="direccionAccidentado2">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="montoSolicitado2" class="form-label">MONTO SOLICITADO (*)</label>
+                      <input type="number" class="form-control" id="montoSolicitado2" step="0.01" min="0">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="invalidez2" class="form-label">INVALIDEZ (*)</label>
+                      <select class="form-select" id="invalidez2">
+                        <option value="">Seleccionar...</option>
+                        <option value="parcial">Parcial</option>
+                        <option value="total">Total</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="porcentajeMenoscabo" class="form-label">% MENOSCABO (*)</label>
+                      <input type="number" class="form-control text-center" id="porcentajeMenoscabo">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="fechaRecepcion2" class="form-label">FECHA RECEPCION (*)</label>
+                      <input type="date" class="form-control" id="fechaRecepcion2">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 alert alert-danger">
+                      <label class="form-label">SOLCITUDES OBSERVADAS</label>
+                      <table class="table table-bordered ">
+                        <tr>
+                          <td>Numero</td>
+                          <td>Cobertura</td>
+                          <td>Monto</td>
+                          <td>Estado</td>
+                          <td>Referencia</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos para Muerte -->
+                <div id="camposMuerte" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="tipoDoc3" class="form-label">TIPO DOCUMENTO (*)</label>
+                      <select class="form-select" id="tipoDoc3" disabled>
+                        <option>Seleccionar...</option>
+                        <option value="DNI" selected>DNI</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="numeroDoc3" class="form-label">NUMERO (*)</label>
+                      <input type="number" class="form-control" id="numeroDoc3" value="70992994" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="nombreAccidentado3" class="form-label">NOMBRE (*)</label>
+                      <input type="text" class="form-control" id="nombreAccidentado3" value="PONTE FUENTES JHAIR" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="celularAccidentado3" class="form-label">CELULAR (*)</label>
+                      <input type="number" class="form-control" id="celularAccidentado3">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="correoAccidentado3" class="form-label">CORREO (*)</label>
+                      <input type="email" class="form-control" id="correoAccidentado3">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="direccionAccidentado3" class="form-label">DIRECCION (*)</label>
+                      <input type="text" class="form-control" id="direccionAccidentado3">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="montoSolicitado3" class="form-label">MONTO SOLICITADO (*)</label>
+                      <input type="number" class="form-control" id="montoSolicitado3" step="0.01" min="0">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="fechaRecepcion3" class="form-label">FECHA RECEPCION (*)</label>
+                      <input type="date" class="form-control" id="fechaRecepcion3">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 alert alert-danger">
+                      <label class="form-label">SOLCITUDES OBSERVADAS</label>
+                      <table class="table table-bordered ">
+                        <tr>
+                          <td>Numero</td>
+                          <td>Cobertura</td>
+                          <td>Monto</td>
+                          <td>Estado</td>
+                          <td>Referencia</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              
+
+           
+
+                <!-- Campos para Gastos Médicos -->
+                <div id="camposGastosMedicos" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="tipoDoc4" class="form-label">TIPO DOCUMENTO (*)</label>
+                      <select class="form-select" id="tipoDoc4" disabled>
+                        <option>Seleccionar...</option>
+                        <option value="DNI" selected>DNI</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="numeroDoc4" class="form-label">NUMERO (*)</label>
+                      <input type="number" class="form-control" id="numeroDoc4" value="70992994" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="nombreAccidentado4" class="form-label">NOMBRE (*)</label>
+                      <input type="text" class="form-control" id="nombreAccidentado4" value="PONTE FUENTES JHAIR" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="celularAccidentado4" class="form-label">CELULAR (*)</label>
+                      <input type="number" class="form-control" id="celularAccidentado4">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="correoAccidentado4" class="form-label">CORREO (*)</label>
+                      <input type="email" class="form-control" id="correoAccidentado4">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="direccionAccidentado4" class="form-label">DIRECCION (*)</label>
+                      <input type="text" class="form-control" id="direccionAccidentado4">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="montoSolicitado4" class="form-label">MONTO SOLICITADO (*)</label>
+                      <input type="number" class="form-control" id="montoSolicitado4" step="0.01" min="0">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="fechaRecepcion4" class="form-label">FECHA RECEPCION (*)</label>
+                      <input type="date" class="form-control" id="fechaRecepcion4">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 alert alert-danger">
+                      <label class="form-label">SOLCITUDES OBSERVADAS</label>
+                      <table class="table table-bordered ">
+                        <tr>
+                          <td>Numero</td>
+                          <td>Cobertura</td>
+                          <td>Monto</td>
+                          <td>Estado</td>
+                          <td>Referencia</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos para Sepelio -->
+                <div id="camposSepelio" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="tipoDoc5" class="form-label">TIPO DOCUMENTO (*)</label>
+                      <select class="form-select" id="tipoDoc5" disabled>
+                        <option>Seleccionar...</option>
+                        <option value="DNI" selected>DNI</option>
+                        <option value="CE">CE</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="numeroDoc5" class="form-label">NUMERO (*)</label>
+                      <input type="number" class="form-control" id="numeroDoc5" value="70992994" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="nombreAccidentado5" class="form-label">NOMBRE (*)</label>
+                      <input type="text" class="form-control" id="nombreAccidentado5" value="PONTE FUENTES JHAIR" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="celularAccidentado5" class="form-label">CELULAR (*)</label>
+                      <input type="number" class="form-control" id="celularAccidentado5">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="correoAccidentado5" class="form-label">CORREO (*)</label>
+                      <input type="email" class="form-control" id="correoAccidentado5">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="direccionAccidentado5" class="form-label">DIRECCION (*)</label>
+                      <input type="text" class="form-control" id="direccionAccidentado5">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="montoSolicitado5" class="form-label">MONTO SOLICITADO (*)</label>
+                      <input type="number" class="form-control" id="montoSolicitado5" step="0.01" min="0">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="fechaRecepcion5" class="form-label">FECHA RECEPCION (*)</label>
+                      <input type="date" class="form-control" id="fechaRecepcion5">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 alert alert-danger">
+                      <label class="form-label">SOLCITUDES OBSERVADAS</label>
+                      <table class="table table-bordered ">
+                        <tr>
+                          <td>Numero</td>
+                          <td>Cobertura</td>
+                          <td>Monto</td>
+                          <td>Estado</td>
+                          <td>Referencia</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+
+              
+
+              <div class="d-flex justify-content-end mt-4">
+                <button type="button" class="btn btn-primary" id="btnSiguiente1">Siguiente</button>
+              </div>
+            </div>
+
+            <!-- Tab 2: Solicitante y Beneficiario -->
+            <div class="tab-pane fade" id="solicitante" role="tabpanel" aria-labelledby="solicitante-tab">
+
+              <fieldset class="border p-3 mb-3">
+                        <legend class="w-auto px-2"><b>Datos del Solicitante</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="tipo_documento_solicitante">TIPO DOCUMENTO (*)</label>
+                                <select class="form-select" id="tipo_documento_solicitante" >
+                                    <option selected="selected">SIN DOCUMENTO</option>
+                                    <option>DNI</option>
+                                    <option>RUC</option>
+                                    <option>CARNET IDENTIDAD</option>
+                                    <option>CARNET EXTRANJERIA</option>
+                                    <option>LIBRETA MILITAR</option>
+                                    <option>PASAPORTE</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="numero_documento_solicitante">NUMERO DOCUMENTO (*)</label>
+                                <input type="text" class="form-control" id="numero_documento_solicitante" placeholder="Ingrese el número de documento">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombre_solicitante">NOMBRE (*)</label>
+                                <input type="text" class="form-control" id="nombre_solicitante" placeholder="Ingrese el nombre del solicitante">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="celular_solicitante">CELULAR (*)</label>
+                                <input type="text" class="form-control" id="celular_solicitante" placeholder="Ingrese el celular del solicitante">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="correo_solicitante">CORREO (*)</label>
+                                <input type="email" class="form-control" id="correo_solicitante" placeholder="Ingrese el correo del solicitante">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="relacion_accidentado">RELACION CON EL ACCIDENTADO (*)</label>
+                                <select class="form-select" id="relacion_accidentado">
+                                    <option value="accidentado">ACCIDENTADO</option>
+                                    <option value="conyuje_conviviente">CONYUGUE O CONVIVIENTE</option>
+                                    <option value="hijo">HIJO</option>
+                                    <option value="padres">PADRES</option>
+                                    <option value="otro">OTROS</option >
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="direccion_solicitante">DIRECCION (*)</label>
+                                <input type="text" class="form-control" id="direccion_solicitante" placeholder="Ingrese la dirección del solicitante">
+                            </div>
+
+                        </div>
+
+              </fieldset>
+
+              <fieldset class="border p-3 mb-3">
+                        <legend class="w-auto px-2"><b>Datos del Beneficiario</b></legend>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input type="radio"  name="beneficiario_accidentado" id="beneficiario_si" autocomplete="off">
+                                <label for="beneficiario_accidentado">EL BENEFICIARIO ES EL MISMO QUE EL SOLICITANTE</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="radio"  name="beneficiario_accidentado" id="beneficiario_si" autocomplete="off">
+                                <label for="beneficiario_accidentado">EL BENEFICIARIO ES EL MISMO QUE EL ACIDENTADO</label>
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="col-md-3">
+                                <label for="modalidad_pago">MODALIDAD DE PAGO (*)</label>
+                                <select class="form-select" id="modalidad_pago" >
+                                    <option selected="selected">SIN DOCUMENTO</option>
+                                    <option>TRANSFERENCIA</option>
+                                    <option>GIRO BCP</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="numero_documento_solicitante">TIPO DOCUMENTO (*)</label>
+                                <select class="form-select" id="numero_documento_solicitante" >
+                                    <option selected="selected">SIN DOCUMENTO</option>
+                                    <option>DNI</option>
+                                    <option>RUC</option>
+                                    <option>CARNET IDENTIDAD</option>
+                                    <option>CARNET EXTRANJERIA</option>
+                                    <option>LIBRETA MILITAR</option>
+                                    <option>PASAPORTE</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="numero_documento_beneficiario">NUMERO DOC (*)</label>
+                                <input type="text" class="form-control" id="numero_documento_beneficiario" placeholder="Ingrese el número de documento">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="nombre_beneficiario">NOMBRE DEL TITULAR DE LA CUENTA (*)</label>
+                                <input type="text" class="form-control" id="nombre_beneficiario" placeholder="Ingrese el nombre del beneficiario">
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="moneda">MONEDA (*)</label>
+                                <select class="form-select" id="moneda">
+                                    <option value="soles">SOLES</option>
+                                    <option value="dolares">DOLARES</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="tipo_cuenta">TIPO DE CUENTA (*)</label>
+                                <select class="form-select" id="tipo_cuenta">
+                                    <option value="bbva">AHORROS</option>
+                                    <option value="bcp">CORRIENTE</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="banco">BANCO (*)</label>
+                                <select class="form-select" id="banco">
+                                    <option value="bbva">BBVA</option>
+                                    <option value="bcp">BCP</option>
+                                    <option value="scotiabank">SCOTIBANK</option>
+                                    <option value="interbank">INTERBANK</option>
+                                    <option value="bnp">BN</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="nro_cuenta">NRO CUENTA</label>
+                                <input type="text" class="form-control" id="nro_cuenta" placeholder="Ingrese el número de cuenta del beneficiario">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="cci">CCI</label>
+                                <input type="text" class="form-control" id="cci" placeholder="Ingrese el CCI del beneficiario">
+                            </div>
+
+                        </div>
+
+              </fieldset>
+
+              <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-secondary" id="btnAnterior2">Anterior</button>
+                <button type="button" class="btn btn-primary" id="btnSiguiente2">Siguiente</button>
+              </div>
+            </div>
+
+            <!-- Tab 3: Documentos Requeridos -->
+            <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle" id="tablaDocumentos">
+                      <thead class="table-light">
+                        <tr>
+                          <th>#</th>
+                          <th><div align="left">Documento</div></th>
+                          <th align="center">Recibido</th>
+                          <th>Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>DNI del Accidentado</td>
+                          <td align="center">
+                            <div class="checkbox">
+                                <label style="font-size: 1.5em">
+                                    <input type="checkbox" value="">
+                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                </label>
+                            </div>
+                          </td>
+                          <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button></td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Informe Médico</td>
+                          <td align="center">
+                            <div class="checkbox">
+                                <label style="font-size: 1.5em">
+                                    <input type="checkbox" value="">
+                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                </label>
+                            </div>
+                          </td>
+                          <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button></td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Facturas/Recibos</td>
+                          <td align="center"><div class="checkbox">
+                                <label style="font-size: 1.5em">
+                                    <input type="checkbox" value="">
+                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                </label>
+                            </div>
+                          </td>
+                          <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button type="button" class="btn btn-success btn-sm mb-3" onclick="agregarDocumento()">
+                    <i class="bi bi-plus"></i> Agregar Documento
+                  </button>
+                </div>
+                <div class="col-md-6">
+                   <!-- Área para subir archivos múltiples -->
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Adjuntar archivos</label>
+                    <div id="drop-area" class="border border-2 border-primary rounded p-3 text-center bg-light" style="cursor:pointer;min-height:100px;">
+                      <p class="mb-2">Arrastra y suelta archivos aquí o haz clic para seleccionar</p>
+                      <input type="file" id="fileElem" multiple style="display:none;" />
+                      <button type="button" class="btn btn-outline-primary btn-sm" onclick="document.getElementById('fileElem').click();">Seleccionar archivos</button>
+                      <div id="fileList" class="mt-2 small text-start"></div>
+                    </div>
+                  </div>
+                  <label for="observacionesDocumentos" class="form-label">Observaciones</label>
+                  <textarea class="form-control" id="observacionesDocumentos" rows="10"></textarea>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-secondary" id="btnAnterior3">Anterior</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="alert alert-warning mt-3" role="alert">
+                VALIDAR QUE LA FECHA DE OCURRENCIA ESTÉ DENTRO DE LAS FECHAS DE VIGENCIA
+            </div>-->
+        </form>
+</div>
+
+
+<!--MODAL DETALLE GASTOS MEDICOS-->
+<div class="modal fade" id="modalDetalleGastos" tabindex="-1" aria-labelledby="modalDetalleGastosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="modalDetalleGastosLabel">DETALLE GASTOS MEDICOS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+            <thead class="table-light text-center">
+              <tr valign="top">
+                <th>VER</th>
+                <th>NUMERO</th>
+                <th>COBERTURA</th>
+                <th>TIPO ATENCION</th>
+                <th>MONTO CARTA</th>
+                <th>MONTO RESERVA</th>
+                <th>MONTO LIQUIDACIÓN</th>
+                <th>MONTO OBSERVADO</th>
+                <th>MONTO NO CUBIERTO</th>
+                <th>ESTADO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <a href="img/CARTA-GARANTIA.pdf" target="_blank"><i class="fas fa-print"></i></a></button>
+                </td>
+                <td>GM-0001</td>
+                <td>GASTOS MÉDICOS</td>
+                <td>EMERGENCIA</td>
+                <td align="center">1000.00</td>
+                <td align="center">1000.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">APROBADO</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  
+                </td>
+                <td>0002</td>
+                <td>GASTOS MÉDICOS</td>
+                <td>AMBULATORIA</td>
+                <td align="center">450.00</td>
+                <td align="center">450.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">RECHAZADO</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <a href="img/CARTA-GARANTIA.pdf" target="_blank"><i class="fas fa-print"></i></a></button>
+                </td>
+                <td>GM-0002</td>
+                <td>GASTOS MÉDICOS</td>
+                <td>AMBULATORIA</td>
+                <td align="center">400.00</td>
+                <td align="center">400.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">APROBADO</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  
+                </td>
+                <td>R-0003</td>
+                <td>GASTOS MÉDICOS</td>
+                <td>HOSPITALARIA</td>
+                <td align="center">650.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">PENDIENTE</td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL DETALLE INCAPACIDAD TEMPORAL-->
+<div class="modal fade" id="modalDetalleIncapacidad" tabindex="-1" aria-labelledby="modalDetalleIncapacidadLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="modalDetalleIncapacidadLabel">DETALLE INCAPACIDAD TEMPORAL</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+            <thead class="table-light text-center">
+              <tr valign="top">
+                <th>VER</th>
+                <th>NUMERO</th>
+                <th>COBERTURA</th>
+                <th>TIPO</th>
+                <th>MONTO CARTA</th>
+                <th>MONTO RESERVA</th>
+                <th>MONTO LIQUIDACIÓN</th>
+                <th>MONTO OBSERVADO</th>
+                <th>MONTO NO CUBIERTO</th>
+                <th>ESTADO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <a href="img/CARTA-GARANTIA.pdf" target="_blank"><i class="fas fa-print"></i></a></button>
+                </td>
+                <td>IT-0001</td>
+                <td>INCAPACIDAD TEMPORAL</td>
+                <td>-</td>
+                <td align="center">1450.00</td>
+                <td align="center">1000.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">APROBADA</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  
+                </td>
+                <td>IT-0002</td>
+                <td>INCAPACIDAD TEMPORAL</td>
+                <td>-</td>
+                <td align="center">1550.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">PENDIENTE</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--MODAL DETALLE INVALIDEZ-->
+<div class="modal fade" id="modalDetalleInvalidez" tabindex="-1" aria-labelledby="modalDetalleInvalidezLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="modalDetalleInvalidezLabel">DETALLE INVALIDEZ PERMANENTE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+            <thead class="table-light text-center">
+              <tr valign="top">
+                <th>VER</th>
+                <th>NUMERO</th>
+                <th>COBERTURA</th>
+                <th>TIPO</th>
+                <th>MONTO CARTA</th>
+                <th>MONTO RESERVA</th>
+                <th>MONTO LIQUIDACIÓN</th>
+                <th>MONTO OBSERVADO</th>
+                <th>MONTO NO CUBIERTO</th>
+                <th>ESTADO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <a href="img/CARTA-GARANTIA.pdf" target="_blank"><i class="fas fa-print"></i></a></button>
+                </td>
+                <td>IP-0001</td>
+                <td>INVALIDEZ PERMANENTE</td>
+                <td>PARCIAL</td>
+                <td align="center">1000.00</td>
+                <td align="center">1000.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">APROBADA</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  
+                </td>
+                <td>0002</td>
+                <td>INVALIDEZ PERMANENTE</td>
+                <td>TOTAL</td>
+                <td align="center">500.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">PENDIENTE</td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--MODAL DETALLE MUERTE-->
+<div class="modal fade" id="modalDetalleMuerte" tabindex="-1" aria-labelledby="modalDetalleMuerteLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="modalDetalleMuerteLabel">DETALLE MUERTE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+            <thead class="table-light text-center">
+              <tr valign="top">
+                <th>VER</th>
+                <th>NUMERO</th>
+                <th>COBERTURA</th>
+                <th>TIPO</th>
+                <th>MONTO CARTA</th>
+                <th>MONTO RESERVA</th>
+                <th>MONTO LIQUIDACIÓN</th>
+                <th>ESTADO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  
+                </td>
+                <td>M-0001</td>
+                <td>MUERTE</td>
+                <td>-</td>
+                <td align="center">21400.00</td>
+                <td align="center">21400.00</td>
+                <td align="center">0.00</td>
+                <td align="center">PENDIENTE</td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>                
+<!--MODAL DETALLE SEPELIO-->
+<div class="modal fade" id="modalDetalleSepelio" tabindex="-1" aria-labelledby="modalDetalleSepelioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="modalDetalleSepelioLabel">DETALLE SEPELIO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+            <thead class="table-light text-center">
+              <tr valign="top">
+                <th>VER</th>
+                <th>NUMERO</th>
+                <th>COBERTURA</th>
+                <th>TIPO</th>
+                <th>MONTO CARTA</th>
+                <th>MONTO RESERVA</th>
+                <th>MONTO LIQUIDACIÓN</th>
+                <th>ESTADO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <a href="img/CARTA-GARANTIA.pdf" target="_blank"><i class="fas fa-print"></i></a>
+                </td>
+                <td>S-0001</td>
+                <td>SEPELIO</td>
+                <td>PARCIAL</td>
+                <td align="center">800.00</td>
+                <td align="center">800.00</td>
+                <td align="center">0.00</td>
+                <td align="center">APROBADA</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <a href="img/CARTA-GARANTIA.pdf" target="_blank"><i class="fas fa-print"></i></a>
+                </td>
+                <td>S-0002</td>
+                <td>SEPELIO</td>
+                <td>TOTAL</td>
+                <td align="center">200.00</td>
+                <td align="center">200.00</td>
+                <td align="center">0.00</td>
+                <td align="center">APROBADA</td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  
+                </td>
+                <td>0003</td>
+                <td>SEPELIO</td>
+                <td>TOTAL</td>
+                <td align="center">100.00</td>
+                <td align="center">0.00</td>
+                <td align="center">0.00</td>
+                <td align="center">PENDIENTE</td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+      </div>
+    </div>
+  </div>
+</div>

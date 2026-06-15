@@ -1,0 +1,120 @@
+<h4 class="mb-4">Gestión de Accidentados (SOLBEN)</h4>
+<div class="row">
+	   
+			  <div class="col-md-1">
+                <b>IAFA</b>
+              </div>
+              <div class="col-md-3">
+                        <select class="form-control form-control-sm">
+                        	<option value="">PROTECTA SECURITY</option>
+                        </select>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-5 " align="right">
+                 <input type="search" class="form-control w-75 form-control-sm" placeholder="🔍 DNI,APELLIDO PATERNO">
+              </div>
+              <div class="col-md-1"><button class="btn btn-primary btn-sm">
+                <i class="fas fa-search"></i>
+             </button></div>
+              <div class="col-12 my-3">
+                      <!-- Tabla de Accidentados -->
+                      <div class="table-responsive mb-3">
+                        <table class="table table-bordered table-hover align-middle" style="font-size: 11px">
+                          <thead class="table-light">
+                            <tr>
+                              <th>SELECCIONAR</th>
+                              <th>PLAN</th>
+                              <th>NRO SINIESTRO</th>
+                              <th>FECHA SINIESTRO</th>
+                              <th>NRO POLIZA</th>
+                              <th>VIGENCIA POLIZA</th>
+                              <th>APELLIDOS Y NOMBRES</th>
+                              <th>NUMERO DOCUMENTO</th>
+                              <th>ESTADO</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-center"><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Nueva Solicitud" data-bs-toggle="modal" data-bs-target="#modalSolben"><input type="radio"></button></td>
+                              <td class="text-center">SOAT</td>
+                              <td class="text-center">00125</td>
+                              <td class="text-center">12/05/2024</td>
+                              <td class="text-center">749988889</td>
+                              <td class="text-center">10-11-2024<br>10-11-2025</td>
+                              <td class="text-center">PONTE FUENTES JHAIR</td>
+                              <td class="text-center">70992994</td>
+                              <td class="text-center">EN INVESTIGACION</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center"><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Nueva Solicitud"><input type="radio"></button></td>
+                              <td class="text-center">SOAT</td>
+                              <td class="text-center">00129</td>
+                              <td class="text-center">10/09/2024</td>
+                              <td class="text-center">7541288889</td>
+                              <td class="text-center">10-11-2024<br>10-11-2025</td>
+                              <td class="text-center">FUENTES RUIZ DANIELA</td>
+                              <td class="text-center">98657412</td>
+                              <td class="text-center">EN INVESTIGACION</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center"><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Nueva Solicitud"><input type="radio"></button></td>
+                              <td class="text-center">SOAT</td>
+                              <td class="text-center">00250</td>
+                              <td class="text-center">18/05/2024</td>
+                              <td class="text-center">98748889</td>
+                              <td class="text-center">10-11-2024<br>10-11-2025</td>
+                              <td class="text-center">LLUEN LOPEZ ALFREDO</td>
+                              <td class="text-center">54258565</td>
+                              <td class="text-center">EN INVESTIGACION</td>
+                            </tr>
+                            <tr>
+                              <td class="text-center"><button class="btn btn-light btn-sm"  data-toggle="tooltip" data-placement="top" title="Nueva Solicitud"><input type="radio"></button></td>
+                              <td class="text-center">SOAT</td>
+                              <td class="text-center">00125</td>
+                              <td class="text-center">12/01/2024</td>
+                              <td class="text-center">2145789645</td>
+                              <td class="text-center">10-09-2024<br>10-09-2025</td>
+                              <td class="text-center">FUENTES ANGULO MARIA</td>
+                              <td class="text-center">65321452</td>
+                              <td class="text-center">EN INVESTIGACION</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <!-- Paginación -->
+                      <nav aria-label="Page navigation example" class="mb-4">
+                        <ul class="pagination pagination-sm justify-content-center">
+                          <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">4</a></li>
+                          <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                      </nav>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<!-- Aquí puedes insertar filtros, tabla o formularios similares a siniestros -->
+
+
+<!--MODAL DE NUEVA SOLICITUD SOLBEN-->
+
+<div class="modal fade" id="modalSolben" tabindex="-1" aria-labelledby="modalSolben" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nueva Peticion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <img src="img/solben.JPG" alt="" class="img-fluid" style="width: 100%;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

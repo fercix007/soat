@@ -1,0 +1,177 @@
+<section class="dashboard-shell">
+  <div class="dashboard-hero">
+    <div>
+      <p class="dashboard-eyebrow mb-2">Centro de control del modulo</p>
+      <h2 class="dashboard-title mb-3">Dashboard operativo de siniestros</h2>
+      <p class="dashboard-subtitle mb-0">
+        Consolida la informacion mas relevante de siniestros, accidentados, cartas de garantia y solicitudes de indemnizacion o reembolso.
+      </p>
+    </div>
+    <div class="dashboard-hero-actions">
+      <button class="btn btn-light dashboard-action" data-nav-target="listar_siniestros.html">
+        <i class="bi bi-car-front me-2"></i>Ver siniestros
+      </button>
+      <button class="btn btn-outline-light dashboard-action" data-nav-target="reembolsos.html">
+        <i class="bi bi-wallet2 me-2"></i>Ver solicitudes
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-statusbar">
+    <div>
+      <span class="dashboard-status-dot"></span>
+      <span id="dashboardLastUpdated">Analizando informacion del modulo...</span>
+    </div>
+    <button id="refreshDashboard" class="btn btn-sm btn-outline-primary">
+      <i class="bi bi-arrow-clockwise me-1"></i>Actualizar analisis
+    </button>
+  </div>
+
+  <div id="dashboardAlert" class="alert alert-info dashboard-alert mb-4">
+    Se estan consolidando los datos de las bandejas para construir los indicadores.
+  </div>
+
+  <div class="dashboard-kpis" id="dashboardKpis">
+    <article class="dashboard-kpi-card">
+      <span class="dashboard-kpi-label">Siniestros activos</span>
+      <strong class="dashboard-kpi-value" id="kpiSiniestros">--</strong>
+      <span class="dashboard-kpi-meta" id="kpiSiniestrosMeta">Casos registrados en la bandeja</span>
+    </article>
+    <article class="dashboard-kpi-card accent-teal">
+      <span class="dashboard-kpi-label">Accidentados</span>
+      <strong class="dashboard-kpi-value" id="kpiAccidentados">--</strong>
+      <span class="dashboard-kpi-meta" id="kpiAccidentadosMeta">Vinculados al modulo</span>
+    </article>
+    <article class="dashboard-kpi-card accent-gold">
+      <span class="dashboard-kpi-label">Solicitudes I/R</span>
+      <strong class="dashboard-kpi-value" id="kpiSolicitudes">--</strong>
+      <span class="dashboard-kpi-meta" id="kpiSolicitudesMeta">Indemnizacion y reembolso</span>
+    </article>
+    <article class="dashboard-kpi-card accent-red">
+      <span class="dashboard-kpi-label">Cartas CG</span>
+      <strong class="dashboard-kpi-value" id="kpiCartas">--</strong>
+      <span class="dashboard-kpi-meta" id="kpiCartasMeta">Bandeja SOLBEN</span>
+    </article>
+    <article class="dashboard-kpi-card accent-navy">
+      <span class="dashboard-kpi-label">Pendientes criticos</span>
+      <strong class="dashboard-kpi-value" id="kpiPendientes">--</strong>
+      <span class="dashboard-kpi-meta" id="kpiPendientesMeta">Items por atender</span>
+    </article>
+    <article class="dashboard-kpi-card accent-emerald">
+      <span class="dashboard-kpi-label">Monto aprobado</span>
+      <strong class="dashboard-kpi-value" id="kpiMontoAprobado">--</strong>
+      <span class="dashboard-kpi-meta" id="kpiMontoAprobadoMeta">CG + indemnizacion/reembolso</span>
+    </article>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-xl-5">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Distribucion por estado</h3>
+            <p class="dashboard-panel-subtitle mb-0">Vista global del modulo</p>
+          </div>
+        </div>
+        <div class="chart-wrap doughnut-wrap">
+          <canvas id="chartEstados"></canvas>
+        </div>
+      </article>
+    </div>
+    <div class="col-xl-7">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Tendencia de registros</h3>
+            <p class="dashboard-panel-subtitle mb-0">Siniestros, cartas y solicitudes por mes</p>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="chartTendencia"></canvas>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-xl-6">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Coberturas con mayor carga</h3>
+            <p class="dashboard-panel-subtitle mb-0">Solicitudes por tipo de cobertura</p>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="chartCoberturas"></canvas>
+        </div>
+      </article>
+    </div>
+    <div class="col-xl-6">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Proveedores mas activos</h3>
+            <p class="dashboard-panel-subtitle mb-0">Cartas de garantia registradas</p>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="chartProveedores"></canvas>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-xl-4">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Alertas operativas</h3>
+            <p class="dashboard-panel-subtitle mb-0">Hallazgos del analisis</p>
+          </div>
+        </div>
+        <div id="dashboardInsights" class="dashboard-insights"></div>
+      </article>
+    </div>
+    <div class="col-xl-4">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Resumen por modulo</h3>
+            <p class="dashboard-panel-subtitle mb-0">Carga y pendientes por bandeja</p>
+          </div>
+        </div>
+        <div id="dashboardModules" class="dashboard-module-list"></div>
+      </article>
+    </div>
+    <div class="col-xl-4">
+      <article class="dashboard-panel h-100">
+        <div class="dashboard-panel-header">
+          <div>
+            <h3 class="dashboard-panel-title">Acciones rapidas</h3>
+            <p class="dashboard-panel-subtitle mb-0">Acceso directo a procesos clave</p>
+          </div>
+        </div>
+        <div class="dashboard-actions-grid">
+          <button class="dashboard-link-card" data-nav-target="listar_siniestros.html">
+            <i class="bi bi-clipboard-data"></i>
+            <span>Bandeja de siniestros</span>
+          </button>
+          <button class="dashboard-link-card" data-nav-target="accidentados.html">
+            <i class="bi bi-person-vcard"></i>
+            <span>Gestion de accidentados</span>
+          </button>
+          <button class="dashboard-link-card" data-nav-target="consulta-cg.html">
+            <i class="bi bi-file-earmark-medical"></i>
+            <span>Consultas de cartas</span>
+          </button>
+          <button class="dashboard-link-card" data-nav-target="reembolsos.html">
+            <i class="bi bi-cash-coin"></i>
+            <span>Indemnizacion / reembolso</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,191 @@
+<div class="container-fluid px-4 pt-3">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <div class="d-flex align-items-center gap-4 flex-wrap">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoBusqueda" id="placa" checked>
+          <label class="form-check-label" for="placa">Placa</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoBusqueda" id="certificado">
+          <label class="form-check-label" for="certificado">Certificado</label>
+        </div>
+        <input type="text" class="form-control form-control-sm w-auto" placeholder="NÚMERO PLACA,CERTIFICADO">
+        <select class="form-select form-select-sm w-auto">
+          <option>ACEPTADO</option>
+          <option>RECHAZADO</option>
+          <option>RECUPERO</option>
+          <option selected>EN INVESTIGACION</option>
+          <option>ANULADO</option>
+          <option>CERRADO</option>
+          <option>OTRO</option>
+        </select>
+        <label class="ms-5"></label>
+        <label class="ms-2">Fecha de Registro</label>
+        <input type="date" class="form-control form-control-sm w-auto" />
+        <input type="date" class="form-control form-control-sm w-auto" />
+        <button class="btn btn-primary btn-sm">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between mb-2">
+    <div>
+      <button class="btn btn-success btn-sm"><i class="bi bi-file-excel"></i> Exportar</button>
+      <button class="btn btn-danger btn-sm"><i class="bi bi-file-earmark-pdf"></i> PDF</button>
+      <button class="btn btn-warning btn-sm"><i class="bi bi-printer"></i> IMPRIMIR</button>
+    </div>
+    <button id="nuevoSiniestroLink" class="btn btn-success btn-sm" data-target="add_siniestro.html">
+  <span>Nuevo Siniestro</span>
+</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-sm text-center align-middle" style="font-size: 11px">
+      <thead class="table-light">
+        <tr>
+          <th>N° SINIESTRO</th>
+          <th>CERTIFICADO</th>
+          <th>PLACA</th>
+          <th>ESTADO</th>
+          <th>CLASE</th>
+          <th>USO</th>
+          <th>FECHA OCURRENCIA</th>
+          <th>CONDUCTOR<br>FECHA NAC</th>
+          <th>COMISARÍA</th>
+          <th>CONTACTO</th>
+          <th>TIPO SINIESTRO</th>
+          <th>USUARIO<br>FECHA REGISTRO</th>
+          <th>RECUPERO</th>
+          <th>UBIGEO</th>
+          <th>N° ACCIDENTADOS</th>
+          <th>OPC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>000041</td>
+          <td>11739854</td>
+          <td>50239J</td>
+          <td>EN INVESTIGACIÓN</td>
+          <td>VEHÍCULO MENOR</td>
+          <td>PARTICULAR</td>
+          <td>12/05/2024<br>14:55:20</td>
+          <td>MARTIN NOLASCO RUIZ<br>10-10-1980</td>
+          <td>CIUDAD DEL CHOFER</td>
+          <td>LOURDES PAUCAR<br>Cel: 979856142</td>
+          <td>ATROPELLO</td>
+          <td>KIMESA<br>12/05/2024<br>13:05:25</td>
+          <td>NO</td>
+          <td>RIMAC<br>LIMA<br>LIMA</td>
+          <td>1</td>
+          <td>
+                <div class="dropdown position-static">
+                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item" href="#">Rechazar</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalAnular">Anular</a></li>
+                    </ul>
+                </div>
+          </td>
+        </tr>
+        <tr>
+          <td>000042</td>
+          <td>177844</td>
+          <td>44859J</td>
+          <td>EN INVESTIGACIÓN</td>
+          <td>VEHÍCULO MENOR</td>
+          <td>PARTICULAR</td>
+          <td>18/05/2024<br>14:55:20</td>
+          <td>JUAN PORTOLA RUIZ<br>10-10-1982</td>
+          <td>LOS FICUS</td>
+          <td>MARIA FERREIRA<br>Cel: 978451232</td>
+          <td>ATROPELLO</td>
+          <td>KIMESA<br>12/05/2024<br>13:05:25</td>
+          <td>NO</td>
+          <td>RIMAC<br>LIMA<br>SAN ISIDRO</td>
+          <td>1</td>
+          <td>
+                <div class="dropdown position-static">
+                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalRechazar">Rechazar</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalAnular">Anular</a></li>
+                    </ul>
+                </div>
+          </td>
+        </tr>
+        <!-- Puedes duplicar esta fila para más datos -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-center mt-3">
+    <nav>
+      <ul class="pagination pagination-sm">
+        <li class="page-item"><a class="page-link" href="#">&laquo;&laquo;</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5&raquo;</a></li>
+        <li class="page-item"><a class="page-link" href="#">&raquo;&raquo;</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<!-- Modal para rechazar -->
+<div class="modal fade" id="modalRechazar" tabindex="-1" aria-labelledby="modalAnularLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAnularLabel">Rechazo de Siniestro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="motivoAnulacion" class="form-label">Ingrese el motivo:</label>
+          <textarea class="form-control" id="motivoAnulacion" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" id="btnGuardarAnulacion">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para anular -->
+<div class="modal fade" id="modalAnular" tabindex="-1" aria-labelledby="modalAnularLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAnularLabel">Anular Siniestro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="motivoAnulacion" class="form-label">Ingrese el motivo:</label>
+          <textarea class="form-control" id="motivoAnulacion" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" id="btnGuardarAnulacion">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
